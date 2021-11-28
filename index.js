@@ -7,7 +7,7 @@ app.use(cors())
 
 
 
-const PORT = 5000;
+const PORT = process.env.PORT||5000;
 
 // all get,post method must be put before app.listen function for them to work
 app.get('/getinfo', function(req, res){
