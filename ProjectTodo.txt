@@ -1,0 +1,12 @@
+Project Plan
+
+The Objective of this Project is to construct a full JS stack (MERN) app
+
+Express JS has aldready been setup in this directory
+
+Learn React and create a simple app that handles simple logins
+
+MongoDb revision
+
+the use a express JS backend to create an app with Electron or even ionic
+
