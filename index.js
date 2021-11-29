@@ -30,6 +30,7 @@ const server = app.listen(PORT, function () {
 });
 
 //  serving react
+console.log(`${process.cwd()}`)
 app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
 });
