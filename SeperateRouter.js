@@ -11,7 +11,7 @@ router.post('/', function(req, res){
 
 // all get,post method must be put before router.listen function for them to work
 router.get('/getinfo', function(req, res){
-   res.send({port:PORT,auth:"None"});
+   res.send({port:`${process.env.PORT}`,auth:"None"});
  });
  
  router.get("/refresh",(req,res)=>{
