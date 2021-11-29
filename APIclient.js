@@ -42,5 +42,6 @@ function SubtoSocket(callBack=(data)=>{console.log(data)}){
     }
 }
 
-TestSocketApi()
-SubtoSocket()
+
+axios.get("https://argo-server-1.herokuapp.com/refresh")
+.then(()=>{TestSocketApi();SubtoSocket()},()=>console.log("Error with axios"))
