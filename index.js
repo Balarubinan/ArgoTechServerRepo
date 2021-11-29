@@ -15,6 +15,11 @@ app.get('/getinfo', function(req, res){
   res.send({port:PORT,auth:"None"});
 });
 
+app.get("/refresh",(req,res)=>{
+    dataSenders=[]
+    dataViewers=[]
+    res.send({arrays:[dataSenders,dataViewers]})
+})
 // Static files
 app.use(express.static("public"));
 
@@ -42,6 +47,8 @@ io.on("connection", function (socket) {
           dataViewers.push(socket)
           console.log("Accepted a Viewer")
           if(dataSenders.length){
+            // to support selecting the Socket get the socket name 
+            //  and implement a filter here
               dataSenders[0].on("valueUpdate",data=>{
                   socket.emit("newValue",data)
               })
