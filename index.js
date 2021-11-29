@@ -18,6 +18,12 @@ app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
 app.use(express.json()); // was originally body-parser.json()
 
 
+app.get("/refresh",(req,res)=>{
+    dataSenders=[]
+    dataViewers=[]
+    res.send({arrays:[dataSenders,dataViewers]})
+})
+
 const server = app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
   console.log(`http://localhost:${PORT}`);
