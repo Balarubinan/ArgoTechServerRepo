@@ -1,2 +1,9 @@
 Find a live-graphing library for JS
 Find a cross platform web dev (mobile app,browser and Panel)
+
+Herouko deploy 
+1) added Engines dependency in package.json
+2) added a Profile
+3) created a react-app
+4) added post-build to pakage .json "scripts"
+ "postinstall": "cd agro-react-app && npm start"
