@@ -14,9 +14,9 @@ var dataViewers=[]
 
 const PORT = process.env.PORT||5000;
 
-app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
-app.use(express.static('agro-react-app/public'));
-app.use(express.json()); // was originally body-parser.json()
+// app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
+// app.use(express.static('agro-react-app/public'));
+// app.use(express.json()); // was originally body-parser.json()
 
 
 app.get("/refresh",(req,res)=>{
@@ -31,10 +31,10 @@ const server = app.listen(PORT, function () {
 });
 
 //  serving react
-console.log(`${process.cwd()}`)
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
-});
+// console.log(`${process.cwd()}`)
+// app.get('*', (req,res) => {
+//     res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
+// });
 
 // Socket setup
 const io = socket(server);

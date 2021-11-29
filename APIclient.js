@@ -43,5 +43,5 @@ function SubtoSocket(callBack=(data)=>{console.log(data)}){
 }
 
 
-TestSocketApi()
-SubtoSocket()
+// TestSocketApi()
+// SubtoSocket()
