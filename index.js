@@ -1,34 +1,31 @@
 var express = require('express');
-var app = express();
+const bodyParser = require('body-parser');
+const path = require('path');
 var cors=require('cors')
 const socket = require("socket.io");
 var serverRouter=require('./SeperateRouter')
+
+var app = express();
 app.use(cors())
+app.use("/restApi",serverRouter)
 
 var dataSenders=[]
 var dataViewers=[]
 
 const PORT = process.env.PORT||5000;
 
-// all get,post method must be put before app.listen function for them to work
-app.get('/getinfo', function(req, res){
-  res.send({port:PORT,auth:"None"});
-});
-
-app.get("/refresh",(req,res)=>{
-    dataSenders=[]
-    dataViewers=[]
-    res.send({arrays:[dataSenders,dataViewers]})
-})
-// Static files
-app.use(express.static("public"));
-
-app.use("/restpath",serverRouter)
+app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
+app.use(express.json()); // was originally body-parser.json()
 
 
 const server = app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
   console.log(`http://localhost:${PORT}`);
+});
+
+//  serving react
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
 });
 
 // Socket setup
