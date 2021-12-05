@@ -14,11 +14,7 @@ router.get('/getinfo', function(req, res){
    res.send({port:`${process.env.PORT}`,auth:"None"});
  });
  
- router.get("/refresh",(req,res)=>{
-     dataSenders=[]
-     dataViewers=[]
-     res.send({arrays:[dataSenders,dataViewers]})
- })
+
  // Static files
  // router.use(express.static("public"));
  

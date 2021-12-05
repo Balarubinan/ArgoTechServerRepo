@@ -12,6 +12,12 @@ app.use("/restApi",serverRouter)
 var dataSenders=[]
 var dataViewers=[]
 
+//  alll objects inside dataSender will be Sensor
+function SensorSocket(name,socket){
+    this.socname=name
+    this.socket=socket
+}
+
 const PORT = process.env.PORT||5000;
 
 // app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
@@ -25,12 +31,17 @@ app.get("/refresh",(req,res)=>{
     res.send({arrays:[dataSenders,dataViewers]})
 })
 
+app.get("/listSender",(req,res)=>{
+    console.log(dataSenders)
+    res.send({senders:Array.from(dataSenders.map(soc=>soc.socname))})
+})
+
 const server = app.listen(PORT, function () {
   console.log(`Listening on port ${PORT}`);
   console.log(`http://localhost:${PORT}`);
 });
 
-//  serving react
+// serving react
 // console.log(`${process.cwd()}`)
 // app.get('*', (req,res) => {
 //     res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
@@ -42,29 +53,44 @@ const io = socket(server);
 io.on("connection", function (socket) {
   console.log("Made socket connection: "+socket.id);
   io.emit("ready",{})
-  socket.on("valueUpdate",data=>{console.log(data)})
+ 
   socket.on("typeUpdate",data=>{
       if(data.type=="send"){
-          dataSenders.push(socket)
-          console.log("Accepted a Sender")
+        socket.on("valueUpdate",data=>{console.log(data)})
+        dataSenders.push(new SensorSocket(data.devicename,socket.id))
+        console.log("Accepted a Sender")
       }
       else if(data.type=="view"){
           dataViewers.push(socket)
           console.log("Accepted a Viewer")
           if(dataSenders.length){
             // to support selecting the Socket get the socket name 
-            //  and implement a filter here
-              dataSenders[0].on("valueUpdate",data=>{
-                  socket.emit("newValue",data)
-              })
-          }else{
-              console.log("in no senders")
-              socket.emit('nosenders',{senders:dataSenders})
+            // and implement a filter here
+                
+                let selSock=data.selSock
+                console.log(dataSenders.find(soc=>soc.socname==selSock))
+                let needSock= io.sockets.connected[dataSenders.find(soc=>soc.socname==selSock).socket]
+                if(needSock){
+                    console.log("In socket found")
+                    needSock.emit("ping",{})
+                    needSock.on("valueUpdate",data=>{
+                        console.log("Sending to viewer")
+                        socket.emit("newValue",data)
+                    })
+                }
+                else{
+                    console.log("socket not found")
+                    socket.emit("nosenders",{"msg":`${data.selSock} not found`})
+                }
+            }else{
+                console.log("in nosender ")
+                socket.emit("nosenders",{"msg":`${data.selSock} not found`})
+            }
           }
-      }
       socket.emit('success',{})
   })
   socket.on('disconnect',()=>{
+      dataSenders=dataSenders.filter(soc=>soc.socket!=socket.id) 
       console.log("socket disconnected "+socket.id )
   })
 }); 
