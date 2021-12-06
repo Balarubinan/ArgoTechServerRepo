@@ -18,8 +18,8 @@ function TestRestApi(){
 
 // devname will be passed from the ListTractors component
 function TestSocketApi(devname){ 
-  socket=io("http://localhost:5000",{secure:true})
-//   socket=io("http://argo-server-1.herokuapp.com/")
+  // socket=io("http://localhost:5000",{secure:true})
+  socket=io("http://argo-server-1.herokuapp.com/")
   socket.on('connect',function(){
     console.log("Socket connected to server")
   })

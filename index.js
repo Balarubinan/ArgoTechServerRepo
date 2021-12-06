@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 var cors=require('cors')
 const socket = require("socket.io");
-var serverRouter=require('./SeperateRouter')
+var serverRouter=require('./SeperateRouter');
+const { ConnectionClosedEvent } = require('mongodb');
 
 var app = express();
 app.use(cors())
@@ -68,6 +69,7 @@ io.on("connection", function (socket) {
             // and implement a filter here
                 
                 let selSock=data.selSock
+                console.log(selSock)
                 console.log(dataSenders.find(soc=>soc.socname==selSock))
                 let needSock= io.sockets.connected[dataSenders.find(soc=>soc.socname==selSock).socket]
                 if(needSock){
@@ -76,6 +78,11 @@ io.on("connection", function (socket) {
                     needSock.on("valueUpdate",data=>{
                         console.log("Sending to viewer")
                         socket.emit("newValue",data)
+                    })
+                    needSock.on('disconnect',()=>{
+                        console.log("needsock disconnect"+needSock.id)
+                        needSock.disconnect()
+
                     })
                 }
                 else{
