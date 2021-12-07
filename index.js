@@ -53,7 +53,7 @@ const io = socket(server);
 
 io.on("connection", function (socket) {
   console.log("Made socket connection: "+socket.id);
-  io.emit("ready",{})
+  socket.emit("ready",{})
  
   socket.on("typeUpdate",data=>{
       if(data.type=="send"){
