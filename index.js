@@ -25,6 +25,10 @@ app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
 app.use(express.static('agro-react-app/public'));
 app.use(express.json()); // was originally body-parser.json()
 
+// app.use(express.static(path.join(__dirname, 'StaitcBootStrap')));
+// app.use(express.static('StaitcBootStrap'));
+app.use("/assets", express.static(__dirname + "/StaitcBootStrap/assets"));
+app.use(express.json()); // was originally body-parser.json()
 
 app.get("/refresh",(req,res)=>{
     dataSenders=[]
@@ -44,6 +48,13 @@ const server = app.listen(PORT, function () {
 
 // serving react
 console.log(`${process.cwd()}`)
+
+// express by deafult serves the file name index.html inside the static folder...even if a route is not defined for it
+app.get('/tempBoot', (req,res) => {
+    res.sendFile(path.join(__dirname, 'StaitcBootStrap/index.html'));
+});
+
+
 app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
 });
