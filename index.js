@@ -21,12 +21,14 @@ function SensorSocket(name,socket){
 
 const PORT = process.env.PORT||5000;
 
-app.use(express.static(path.join(__dirname, 'agro-react-app/build')));
-app.use(express.static('agro-react-app/public'));
+app.use(express.static(path.join(__dirname, 'reactwebagro/build')));
+app.use(express.static('reactwebagro/public'));
 app.use(express.json()); // was originally body-parser.json()
 
 // app.use(express.static(path.join(__dirname, 'StaitcBootStrap')));
-// app.use(express.static('StaitcBootStrap'));
+app.use(express.static('StaitcBootStrap'));
+// bascially what the below lines mean is that wheneve /assets is access it is redirected to /StaticBoot...
+
 app.use("/assets", express.static(__dirname + "/StaitcBootStrap/assets"));
 app.use(express.json()); // was originally body-parser.json()
 
@@ -56,7 +58,7 @@ app.get('/tempBoot', (req,res) => {
 
 
 app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, 'agro-react-app/build/index.html'));
+    res.sendFile(path.join(__dirname, 'reactwebagro/build/index.html'));
 });
 
 // Socket setup
