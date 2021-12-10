@@ -13,14 +13,15 @@ export function GetSenderList(){
  
   // return axios.get("http://localhost:5000/listSender")
   console.log("Calling listSenderAPI")
-  return axios.get("http://argo-server-1.herokuapp.com/listSender")
+  console.log("newstuff")
+  return axios.get("https://argo-server-1.herokuapp.com/listSender")
 
 }
 
 // devname will be passed from the ListTractors component
 export function InitSocketApi(devname){ 
   // socket=io("http://localhost:5000",{secure:true})
-  socket=io("http://argo-server-1.herokuapp.com/")
+  socket=io("https://argo-server-1.herokuapp.com/")
   socket.on('connect',function(){
     console.log("Socket connected to server")
   })
