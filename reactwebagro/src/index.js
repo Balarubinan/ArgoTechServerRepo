@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import NewApp from './NewApp'
+import SideNavComp from "./SideNavBar"
 
 ReactDOM.render(
   <React.StrictMode>

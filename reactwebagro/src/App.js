@@ -1,9 +1,5 @@
-// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-// import ReactDom from 'react-dom';
-// import Button from '@mui/material/Button'
-// import NewApp from './NewApp'
 import ChartApp from "./ChartComp"
 import ListConComp from './ListConComp';
 import {
@@ -12,15 +8,21 @@ import {
   Route
 } from "react-router-dom";
 import {useNavigate } from 'react-router-dom'
+import SideNavComp from './SideNavBar';
+import ButtonAppBar from './TopNavBar';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
+    <>
+    <ButtonAppBar/>
     <Router>
       <Routes>
         <Route path="/" element={<ListConComp/>}/>
         <Route path="/viewTractor" element={<ChartApp/>}/>
+        <Route path="/check" element={<SideNavComp/>}/>
       </Routes>
     </Router>
+    </>
   );
 }
 // it doesn't matter under what name you Export it would still work
