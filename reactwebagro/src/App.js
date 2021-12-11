@@ -12,6 +12,7 @@ import SideNavComp from './SideNavBar';
 import ButtonAppBar from './TopNavBar';
 import DummyComp from './DummyComp';
 import TimeEstimateComp from './TimeEstimate';
+import LoginComp from './LoginComp';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
@@ -20,8 +21,9 @@ function App(props) {
     <Router>
       <Routes>
         <Route path="/" element={<ListConComp/>}/>
+        {/* /Home is project details!! */}
         <Route path="/viewTractor" element={<ChartApp/>}/>
-        {/* <Route path="/unuser" element={<DummyComp/>}/> */}
+        <Route path="/Login" element={<LoginComp/>}/>
         <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
       </Routes>
     </Router>
