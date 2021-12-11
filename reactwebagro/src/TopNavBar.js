@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import TemporaryDrawer from './SideNavBar';
+import { AccordionDetails } from '@mui/material';
 // import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar() {
@@ -23,3 +24,8 @@ export default function ButtonAppBar() {
     </Box>
   );
 }
+
+// todo 
+// finish linking the components
+// create components => Time estimate,login, register , profile ,contact , project details 
+// simply use JSON file for saving login info

@@ -10,6 +10,8 @@ import {
 import {useNavigate } from 'react-router-dom'
 import SideNavComp from './SideNavBar';
 import ButtonAppBar from './TopNavBar';
+import DummyComp from './DummyComp';
+import TimeEstimateComp from './TimeEstimate';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
@@ -19,7 +21,8 @@ function App(props) {
       <Routes>
         <Route path="/" element={<ListConComp/>}/>
         <Route path="/viewTractor" element={<ChartApp/>}/>
-        <Route path="/check" element={<SideNavComp/>}/>
+        {/* <Route path="/unuser" element={<DummyComp/>}/> */}
+        <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
       </Routes>
     </Router>
     </>

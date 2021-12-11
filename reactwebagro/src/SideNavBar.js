@@ -7,10 +7,13 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 // import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import {useNavigate} from 'react-router-dom'
+import DummyComp from './DummyComp';
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 
 export default function TemporaryDrawer() {
+  const navigate=new DummyComp().navigate
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -25,6 +28,10 @@ export default function TemporaryDrawer() {
 
     setState({ ...state, [anchor]: open });
   };
+  const reNavToPage=(itemName)=>{
+    console.log(itemName);console.log("Was clciked")
+    navigate("/tempBoot")
+  }
 
   const list = (anchor) => (
     <Box
@@ -34,8 +41,12 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+      <ListItem>
+            <ListItemText primary="Agro Tech" />
+      </ListItem>
+      <Divider />
         {['Project Details', 'Contact', 'Register', 'Live Chart','Time Estimation'].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} onClick={()=>reNavToPage(text)}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -48,7 +59,10 @@ export default function TemporaryDrawer() {
     <div>
       {
         <React.Fragment>
-          <Button onClick={toggleDrawer(anchor, true)}>Menu</Button>
+          <Button onClick={toggleDrawer(anchor, true)}>Menu
+          {/* <IconButton></IconButton> */}
+
+          </Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
