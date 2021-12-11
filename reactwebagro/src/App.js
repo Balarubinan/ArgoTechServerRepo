@@ -20,8 +20,8 @@ function App(props) {
     <ButtonAppBar/>
     <Router>
       <Routes>
-        <Route path="/" element={<ListConComp/>}/>
-        {/* /Home is project details!! */}
+        <Route path="/ListTractors" element={<ListConComp/>}/>
+        {/* /Ho */}
         <Route path="/viewTractor" element={<ChartApp/>}/>
         <Route path="/Login" element={<LoginComp/>}/>
         <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
