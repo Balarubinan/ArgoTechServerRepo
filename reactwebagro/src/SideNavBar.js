@@ -72,7 +72,6 @@ export default function TemporaryDrawer() {
           >
             {list(anchor)}
           </Drawer>
-          
         </React.Fragment>
       }
     </div>

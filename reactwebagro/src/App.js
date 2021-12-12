@@ -13,7 +13,8 @@ import ButtonAppBar from './TopNavBar';
 import DummyComp from './DummyComp';
 import TimeEstimateComp from './TimeEstimate';
 import LoginComp from './LoginComp';
-import ContactComp from './ProjectDetails';
+import ContactComp from './ContactComp';
+import ProjectDetailsComp from './ProjectDetails';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
@@ -22,7 +23,7 @@ function App(props) {
     <Router>
       <Routes>
         <Route path="/ListTractors" element={<ListConComp/>}/>
-        {/* /Ho */}
+        <Route path="/projectDetails" element={<ProjectDetailsComp/>}/>
         <Route path="/viewTractor" element={<ChartApp/>}/>
         <Route path="/Contact" element={<ContactComp/>}/>
         <Route path="/Login" element={<LoginComp/>}/>
