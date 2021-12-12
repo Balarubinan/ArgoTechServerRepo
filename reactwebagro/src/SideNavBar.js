@@ -33,7 +33,7 @@ export default function TemporaryDrawer() {
   const reNavToPage=(itemName)=>{
     console.log(itemName);console.log("Was clciked")
   }
-  const links=["/projectDetails","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate"]
+  const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate"]
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}

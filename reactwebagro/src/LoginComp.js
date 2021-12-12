@@ -14,13 +14,13 @@ function LoginComp() {
         console.log(data)
         axios.get(`http://localhost:5000/restApi/isValid/${data.username}/${data.password}`).then(d=>{
             if(d.data.status==true){console.log("i navig")
-                navig("/home")}
+                navig("/Home")}
         },d=>console.log(d))
         
         // axios.get("https://argo-server-1.herokuapp.com/restApi/isValid/IIPC/IIPCa")
         axios.get(`https://argo-server-1.herokuapp.com/restApi/isValid/${data.username}/${data.password}`).then(d=>{
             if(d.data.status==true){console.log("i navig")
-                navig("/home")}
+                navig("/Home")}
         },d=>console.log(d))
     }
     return (
@@ -45,7 +45,7 @@ function LoginComp() {
             <div className="col-lg-6">
               <div className="p-5">
                 <div className="text-center">
-                  <h4 className="text-dark mb-4">Login</h4>
+                  <h4 className="text-dark mb-4">ArgoTech Login</h4>
                 </div>
                 <form className="user" onSubmit={e=>submitHandler(e)}>
                   <div className="form-group">
