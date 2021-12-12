@@ -28,7 +28,7 @@ function TimeEstimateComp() {
         XtraFactor+=(parseInt(data.soilType)*0.2)
         XtraFactor+=(parseInt(data.soilCondition)*0.4)
         XtraFactor+=(parseInt(data.preCondition)*0.5)
-        setCost((BaseCost*XtraFactor).toFixed(1).toString()+" Hours")
+        setCost((BaseCost*XtraFactor).toFixed(1).toString())
     }
     return (
         <div className="container px-5 my-5">
@@ -41,6 +41,7 @@ function TimeEstimateComp() {
     rel="stylesheet"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   />
+  <h3 align="center" padding="50px">Time Estimation</h3>
   <form onSubmit={e=>submitHandler(e)}>
     <div className="form-group row">
       <label htmlFor="landArea" className="col-4 col-form-label">
@@ -212,13 +213,13 @@ function TimeEstimateComp() {
     </div>
     <div className="form-group row">
       <div className="offset-4 col-8">
-        <button name="submit" type="submit" className="btn btn-primary">
+        <button name="submit" type="submit" className="btn btn-primary" align="center">
           Estimate Time
         </button>
       </div>
     </div>
   </form>
-  <h2 style={{"align":"center"}}>Estimated Time: {cost}</h2>
+  <h2 align="center">Estimated Time: {cost} Hours</h2>
 </>
 
 </div>
