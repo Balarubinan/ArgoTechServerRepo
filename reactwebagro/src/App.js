@@ -13,6 +13,7 @@ import ButtonAppBar from './TopNavBar';
 import DummyComp from './DummyComp';
 import TimeEstimateComp from './TimeEstimate';
 import LoginComp from './LoginComp';
+import ContactComp from './ProjectDetails';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
@@ -23,11 +24,12 @@ function App(props) {
         <Route path="/ListTractors" element={<ListConComp/>}/>
         {/* /Ho */}
         <Route path="/viewTractor" element={<ChartApp/>}/>
+        <Route path="/Contact" element={<ContactComp/>}/>
         <Route path="/Login" element={<LoginComp/>}/>
         <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
       </Routes>
     </Router>
-    </>
+    </> 
   );
 }
 // it doesn't matter under what name you Export it would still work

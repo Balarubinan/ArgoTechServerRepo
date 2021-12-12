@@ -7,9 +7,9 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 // import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import {useNavigate} from 'react-router-dom'
 import Link from '@mui/material/Link';
 import DummyComp from './DummyComp';
+import { AiOutlineMenu } from "react-icons/ai";
 
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
@@ -62,9 +62,8 @@ export default function TemporaryDrawer() {
     <div>
       {
         <React.Fragment>
-          <Button onClick={toggleDrawer(anchor, true)}>Menu
-          {/* <IconButton></IconButton> */}
-
+          <Button onClick={toggleDrawer(anchor, true)}>
+          <AiOutlineMenu size={25}/>
           </Button>
           <Drawer
             anchor={anchor}
