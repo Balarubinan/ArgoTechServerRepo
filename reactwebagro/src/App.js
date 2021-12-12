@@ -15,6 +15,7 @@ import TimeEstimateComp from './TimeEstimate';
 import LoginComp from './LoginComp';
 import ContactComp from './ContactComp';
 import ProjectDetailsComp from './ProjectDetails';
+import IndustryPartnerComp from './IndustryPartner';
 // import Chart2 from "./ReChart"
 function App(props) {
   return (
@@ -28,6 +29,7 @@ function App(props) {
         <Route path="/Contact" element={<ContactComp/>}/>
         <Route path="/Login" element={<LoginComp/>}/>
         <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
+        <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
       </Routes>
     </Router>
     </> 

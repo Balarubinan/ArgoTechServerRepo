@@ -22,7 +22,7 @@ export default function ProjectDetailsComp() {
           <img src={DSTLogo} height="150px" width="150px"/>
         </Grid>
         <Grid item xs={8}>
-        <Stack direction="column" marginLeft={5}>
+        <Stack direction="column">
         <Typography variant="h3" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={3}>
         Laser Based Land Leveler 
       </Typography>
