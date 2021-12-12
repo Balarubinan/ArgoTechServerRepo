@@ -24,10 +24,30 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function MediaCard() {
   return (
-    <Box>
-        <Grid  container spacing={1} marginTop={5} marginLeft={1}>
-         <Grid item xs={4}>
-        <Card sx={{ maxWidth: 345  ,minHeight:380}}>
+    <Stack direction="column">
+      <Box marginLeft="33%" align="center" mt={3}>
+        <Card sx={{ maxWidth: 500 }}>
+      <CardMedia
+        component="img"
+        height="140"
+        image={AvatarImg}
+        alt="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div"  textAlign="center">
+        Dr. S.Parthasarathy
+        </Typography>
+        <Typography variant="body2" color="text.secondary" textAlign="center">
+        Professor/EEE<br/>
+        Head Industrial Relations & IIPC - Chief Coordinator<br/>
+        K.L.N. College of Engineering, Pottapalyam, Sivagangai District, 
+        Tamil Nadu<br/>9443402901<br/>sarathy_sps@yahoo.co.in<br/>iipc@klnce.edu<br/>
+        </Typography>
+      </CardContent>
+        </Card>
+        </Box>
+        <Box marginLeft="33%" align="center" mt={3}>
+        <Card sx={{ maxWidth: 500  ,minHeight:380 }} >
       <CardMedia
         component="img"
         height="140"
@@ -46,30 +66,10 @@ export default function MediaCard() {
         </Typography>
       </CardContent>
         </Card>
-        </Grid>
-    <Grid item xs={4}>
-        <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={AvatarImg}
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div"  textAlign="center">
-        Dr. S.Parthasarathy
-        </Typography>
-        <Typography variant="body2" color="text.secondary" textAlign="center">
-        Professor/EEE<br/>
-        Head Industrial Relations & IIPC - Chief Coordinator<br/>
-        K.L.N. College of Engineering, Pottapalyam, Sivagangai District, 
-        Tamil Nadu<br/>9443402901<br/>sarathy_sps@yahoo.co.in<br/>iipc@klnce.edu<br/>
-        </Typography>
-      </CardContent>
-    </Card>
-    </Grid>
-    <Grid item xs={4}>
-        <Card sx={{ maxWidth: 345 ,minHeight:380}}>
+        </Box>
+        
+        <Box marginLeft="33%" align="center" mt={3}>
+        <Card sx={{ maxWidth: 500 ,minHeight:380}}>
       <CardMedia
         component="img"
         height="140"
@@ -87,10 +87,10 @@ export default function MediaCard() {
         clementpaulprabhu@gmail.com<br/>
         </Typography>
       </CardContent>
-    </Card>
-    </Grid>
-    </Grid>
-    </Box>
+        </Card>
+        </Box>
+
+    </Stack>
   );
 }
 
