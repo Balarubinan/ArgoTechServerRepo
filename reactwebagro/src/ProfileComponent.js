@@ -21,6 +21,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 
 function ProfileComponent() {
+    const onHandler=()=>{
+        console.log("Buton clicked")
+    }
     return (
         <div className="row">
             <Box minWidth="80%" marginLeft="10%">
@@ -63,6 +66,11 @@ function ProfileComponent() {
           Password:
         </Typography>
         <TextField label="password " color="primary" focused pb={1} fullWidth/>
+        <Box container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"><Button variant="contained" onClick={e=>onHandler(e)}>Update</Button></Box>
       </CardContent>
     </Card>
             </div>
