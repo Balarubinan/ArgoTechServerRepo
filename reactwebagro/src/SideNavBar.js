@@ -33,7 +33,7 @@ export default function TemporaryDrawer() {
   const reNavToPage=(itemName)=>{
     console.log(itemName);console.log("Was clciked")
   }
-  const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate"]
+  const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate","/Profile"]
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -46,7 +46,7 @@ export default function TemporaryDrawer() {
             <ListItemText primary="Agro Tech" style={{"font-size":"50px"}} />
       </ListItem>
       <Divider />
-        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation'].map((text, index) => (
+        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Profile"].map((text, index) => (
           <ListItem button key={text} onClick={()=>reNavToPage(text)}>
             <Link href={links[index]} underline="none" >
               {text}
