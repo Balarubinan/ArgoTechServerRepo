@@ -52,3 +52,6 @@ export default App;
 // Synthetic events
 
 //  First project is a Form creation application!!
+
+// fix contacts margin problem
+// fix project details Text justify problem

@@ -8,6 +8,9 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -18,7 +21,42 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function ProjectDetailsComp() {
   return (
     <>
-    <Box sx={{flexGrow: 1}} marginTop={3} width="80%" marginLeft="10%">
+    <div className='row'>
+      <div className="col-2"><img src={KLNlogo} height="150px" width="150px"/></div>
+      <div className="col-8"><Stack direction="column">
+        <Typography variant="h3" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={3}>
+        Laser Based Land Leveler 
+      </Typography>
+      <Typography variant="h5" textAlign={"center"}   style={{ "color": '#2E3B55' }} gutterBottom>
+      with Remote Monitoring
+      </Typography>
+      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+      DEPARTMENT OF SCIENCE & TECHNOLOGY (DST), New Delhi
+      </Typography>
+        </Stack></div>
+      <div className="col-2"><img src={DSTLogo} height="150px" width="150px"/></div>
+    </div>
+    <Stack direction="column" marginTop={6}>
+    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
+    Principal Investigator (PI): Dr. S.PARTHASARATHY, Prof / EEE, 
+    Head Industrial Relations & IIPC - Chief Coordinator
+      </Typography>
+      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={6} gutterBottom>
+      Co-Principal Investigator (Co-PI): Dr.A.V.Ram Prasad, Prof / ECE  
+      </Typography>
+      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
+      Co-Principal Investigator (Co-PI): Prof.S.Nallathambi,AP/Mech
+      </Typography><Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+      Project Period: 2019-2021
+      </Typography>
+      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+      Order No:  DST/TDT/AGRO-12/2019
+      </Typography>
+    </Stack>
+    </>
+  );
+}
+{/* <Box sx={{flexGrow: 1}} marginTop={3} width="80%" marginLeft="10%">
          <Grid container spacing={2} minWidth="150px">
         <Grid item width="10%" textAlign={"center"}>
           <img src={KLNlogo} height="150px" width="150px"/>
@@ -40,37 +78,4 @@ export default function ProjectDetailsComp() {
         <img src={DSTLogo} height="150px" width="150px"/>
         </Grid>
       </Grid>
-    </Box>
-    <Stack direction="column" marginTop={6}>
-    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-    Principal Investigator (PI): Dr. S.PARTHASARATHY, Prof / EEE, 
-    Head Industrial Relations & IIPC - Chief Coordinator
-      </Typography>
-      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={6} gutterBottom>
-      Co-Principal Investigator (Co-PI): Dr.A.V.Ram Prasad, Prof / ECE  
-      </Typography>
-      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-      Co-Principal Investigator (Co-PI): Prof.S.Nallathambi,AP/Mech
-      </Typography><Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-      Project Period: 2019-2021
-      </Typography>
-      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-      Order No:  DST/TDT/AGRO-12/2019
-      </Typography>
-    </Stack>
-    </>
-  );
-}
-{/* <img src={DSTLogo} height="150px" width="150px"/>
-        <Stack direction="column" marginLeft={5}>
-        <Typography variant="h3" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={3}>
-        Laser Based Land Leveler 
-      </Typography>
-      <Typography variant="h5" textAlign={"center"}   style={{ "color": '#2E3B55' }} gutterBottom>
-      with Remote Monitoring
-      </Typography>
-      <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-      DEPARTMENT OF SCIENCE & TECHNOLOGY (DST), New Delhi
-      </Typography>
-        </Stack>
-        <img src={DSTLogo} height="150px" width="150px"/> */}
+    </Box> */}
