@@ -24,6 +24,7 @@ var updateInterval = 1000;
 class ChartApp extends Component {
 	constructor(props) {
 		super(props);
+		this.state=({lineColor:"green"})
 		this.updateChart = this.updateChart.bind(this);
 		this.updateChartFake=this.updateChartFake.bind(this);
 		console.log("Cur_objsis  "+sharedVars.get_obj())
@@ -56,7 +57,7 @@ class ChartApp extends Component {
 	updateChartFake=()=>{
 		yVal = Math.round(5 + Math.random() *(-5-5));
 		this.setState({current_val:yVal})
-		dps.push({x: xVal,y: yVal});
+		dps.push({x: xVal,y: yVal,lineColor:yVal>0?"#ad3d51":"#24a57c"});
 		xVal++;
 		if (dps.length >  100 ) {
 			dps.shift();
@@ -77,15 +78,13 @@ class ChartApp extends Component {
 	}
 	render() {
 		const options = {
+			
 			title :{
 				text: "Readings from Device :"+get_obj()
 			},
 			data: [{
 				type: "line",
-				// fill:{
-				// 	target: 'origin',
-				// 	below: 'rgb(23, 23, 255)'
-				// },
+				// lineColor: this.state.lineColor,
 				dataPoints : dps
 			}],
 			axisY:{
@@ -101,7 +100,7 @@ class ChartApp extends Component {
 		return (
 		<ErrorCheck>
 		<div>
-			{get_obj()===null&&<Navigate to="/"/>}
+			{get_obj()===null&&<Navigate to="/listTractors"/>}
 			<CanvasJSChart options = {options}
 				 onRef={ref => this.chart = ref}
 			/>
@@ -112,4 +111,11 @@ class ChartApp extends Component {
 		);
 	}
 }
+// if(dps[-1]<0&&yVal>0){
+// 	dps.push({x: xVal-0.5,y:0,lineColor:"#24a57c"});
+// 	dps.push({x: xVal,y:yVal,lineColor:yVal>0?"#ad3d51":"#24a57c"});
+// }else{
+// 	dps.push({x: xVal-0.5,y:0,lineColor:"#ad3d51"});
+// 	dps.push({x: xVal,y:yVal,lineColor:"#24a57c"});
+// }
 export default ChartApp;
