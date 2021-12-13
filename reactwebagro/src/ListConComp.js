@@ -31,7 +31,7 @@ export default class ListConComp extends Component {
     updateList(){
         GetSenderList().then(data=>{
             console.log(data.data.senders)
-            this.setState({dev_names:data.data.senders})
+            this.setState({dev_names:[...data.data.senders,"defult sender"]})
 
         },()=>{})
         console.log("dev name"+JSON.stringify(this.state.dev_names))

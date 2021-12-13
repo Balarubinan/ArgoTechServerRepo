@@ -15,7 +15,7 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 // var dps = [{x: 1, y: 10}, {x: 2, y: 13}, {x: 3, y: 18}, {x: 4, y: 20}, {x: 5, y: 17},{x: 6, y: 10}, {x: 7, y: 13}, {x: 8, y: 18}, {x: 9, y: 20}, {x: 10, y: 17}];   //dataPoints.
 var dps=new Array()
-dps.length=10
+dps.length=100
 dps.fill({x:1,y:0})
 var xVal = dps.length + 1;
 var yVal = 15;
@@ -43,12 +43,12 @@ class ChartApp extends Component {
             }
           });
 		// Comment the Below line inproduction!!
-		// this.time_id=setInterval(this.updateChartFake, 1000);
+		this.time_id=setInterval(this.updateChartFake, 500);
 	}
 	componentWillUnmount=()=>{
 		// clearInterval(this.time_id)
 		// resetting dps array
-		dps.length=10
+		dps.length=100
 		dps.fill({x:1,y:0})
 		UnSubFromSocket(this.updateChart)
 		console.log("Unmount called")
@@ -58,7 +58,7 @@ class ChartApp extends Component {
 		this.setState({current_val:yVal})
 		dps.push({x: xVal,y: yVal});
 		xVal++;
-		if (dps.length >  10 ) {
+		if (dps.length >  100 ) {
 			dps.shift();
 		}
 		this.chart.render();
@@ -91,10 +91,10 @@ class ChartApp extends Component {
 			axisY:{
 				maximum:15,
 				minimum:-15,
-				interval:5
+				interval:15
 			},
 			axisX:{
-				interval:1
+				interval:20
 			}
 		}
 		// redirecting to device view page if url is directly accessed
