@@ -9,7 +9,20 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Link from '@mui/material/Link';
 import DummyComp from './DummyComp';
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu,AiFillHome,AiOutlineInfoCircle } from "react-icons/ai";
+import {FcAbout} from "react-icons/fc"
+import {GrContactInfo} from "react-icons/gr";
+import {GoGraph} from "react-icons/go"
+import {MdTimer} from "react-icons/md"
+import {GiThreeFriends} from "react-icons/gi"
+import {CgProfile} from "react-icons/cg"
+import 'bootstrap/dist/css/bootstrap.css';
+
+// GrContactInfo
+// GiThreeFriends
+// GoGraph
+// MdTimer
+// CgProfile
 
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
@@ -34,6 +47,7 @@ export default function TemporaryDrawer() {
     console.log(itemName);console.log("Was clciked")
   }
   const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate","/Profile"]
+  const icons=[<AiFillHome/>,<AiOutlineInfoCircle color="black"/>,<GrContactInfo/>,<GiThreeFriends/>,<GoGraph/>,<MdTimer/>,<CgProfile/>]
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -48,9 +62,11 @@ export default function TemporaryDrawer() {
       <Divider />
         {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Profile"].map((text, index) => (
           <ListItem button key={text} onClick={()=>reNavToPage(text)}>
-            <Link href={links[index]} underline="none" >
-              {text}
-            </Link>
+            {icons[index]}
+              <Box marginLeft={2}>
+              <Link href={links[index]} underline="none" mr={2} color="black">
+              {text}</Link>
+              </Box>
           </ListItem>
         ))}
       </List>
