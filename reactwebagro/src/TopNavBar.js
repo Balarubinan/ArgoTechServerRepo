@@ -33,6 +33,5 @@ export default function ButtonAppBar() {
 // #9aaed6
 
 // todo 
-// finish linking the components
-// create components => Time estimate,login, register , profile ,contact , project details 
-// simply use JSON file for saving login info
+// figure out y the topnavbar is extending out of control in some pages
+// make the register and update page functional

@@ -4,36 +4,31 @@ var router = express.Router();
 
 
 router.use(express.json())
+
 router.get('/isValid/:user/:pass', async function(req, res){
     // response is sent as an actual object
     let isValid=false
     console.log(req.body)
    //  req.on(data=>console.log(data))
-    fs.readFileSync("UserData/user.json", function(err, data) {
-      if (err) throw err;
-      const users = JSON.parse(data);
-      console.log(users);
-       if(users[req.body.username]==req.body.pass)
-       isValid=true;
-  });
-  if(req.params.user=="IIPC"&&req.params.pass=="IIPCadmin")
-      res.send({status:true})
-   else
-      res.send({status:false})
-   
-});
+   let users=null;
+   try{users=fs.readFileSync("UserData/user.txt");}catch(err){console.log("erroe herw"+err)}
+   users=JSON.parse(users)
+   for(let user of users){
+      // i stored the user as a jsonstring while writing
+      user=JSON.parse(user)
+      if(req.params.user==user.name&&req.params.pass==user.pass)
+      {res.send({status:true});return;}
+   }
+   res.send({status:false});
+   }
+);
 router.post('/saveUser/:name/:pass/:email', function(req, res){
       console.log(req.params)
       let predata=null;
-      fs.readFileSync("UserData/user.json", function(err, data) {
-         if (err) throw err;
-         const users = JSON.parse(data);
-         predata=users
-         console.log("sff")
-         console.log(users);
-     })
+      predata=fs.readFileSync("UserData/user.txt")
+      predata=JSON.parse(predata)
    // preData is an array of users
-     console.log(predata)
+     console.log(predata+"ddsdsfdd")
    // create a JSON object
    const user = {
       "name": req.params.name,
@@ -43,10 +38,14 @@ router.post('/saveUser/:name/:pass/:email', function(req, res){
 
    // convert JSON object to string
    const data = JSON.stringify(user);
+   predata=predata?predata:[]
+   console.log(typeof predata);console.log("****");
    predata.push(data)
+   console.log(predata);console.log("****");
+   
 
    // write JSON string to a file
-   fs.writeFileSync('UserData/user.json', predata, (err) => {
+   fs.writeFileSync('UserData/user.txt',JSON.stringify(predata)+"\n", (err) => { // STARTHERE
       if (err) {
          throw err;
       }
