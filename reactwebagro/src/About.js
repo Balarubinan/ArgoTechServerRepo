@@ -16,13 +16,15 @@ import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import {AiOutlineFundProjectionScreen} from 'react-icons/ai'
+import {IoMdAnalytics} from "react-icons/io"
 function AboutComp() {
     return (
         <Box width="80%"  marginLeft="10%">
         <Typography gutterBottom variant="h5" component="div"  style={{"font-size":"50px",color: '#2E3B55'}} align="center">
-          Project Concept
+          <AiOutlineFundProjectionScreen/> Project Concept
         </Typography>
-        <Typography variant="body1" color="text.primary">
+        <Typography variant="body1" color="text.primary" textAlign="justify">
         The developed prototype has a dual role device for leveling of the land with the help a LASER based leveler and a plough unit along with remote monitoring system. In the existing system, the mechanical scraper will be of fixed size of 2 meters length, but in the proposed system, 
         this mechanical scraper can be extended twice the existing length. This covers more area of land which in turn saves time of leveling. The laser transmitter transmits a laser beam, which is intercepted by the laser receiver mounted on the leveling scraper. The control panel
         mounted on the tractor interprets the signal from the receiver and opens or closes the hydraulic control valve, which will raise or lower the scraper. Once the leveling is completed, the leveler is converted into the required plough device. The major advantage of this proposed methodology
@@ -32,9 +34,9 @@ function AboutComp() {
         <Box pt={3} pb={3}><Divider paddingTop="10px"/></Box>
 
         <Typography gutterBottom variant="h5" component="div"  style={{"font-size":"50px",color: '#2E3B55'}} align="center">
-        Techno-economic analysis
+        <IoMdAnalytics/>Techno-economic analysis
         </Typography>
-        <Typography variant="body1" color="text.primary">
+        <Typography variant="body1" color="text.primary" textAlign="justify">
         The proposed project “Laser Based Hydraulic Controlled Variable Length Land Leveler Cum Plough Device With Remote Monitoring System” ensures about the modification of the existing design of a laser based land leveler. This will have an impact on the agricultural 
         sector as the proposed design, works as a dual purpose unit of both leveling as well as plough. This leads to save a lot of time in leveling as well as plough. As the scraper length is twice the existing system, half of the time is reduced for leveling of the land. Also this design 
         can be used for small scale land and very large scale lands. This leads to an economical operation in terms of man 
