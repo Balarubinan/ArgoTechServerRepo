@@ -30,6 +30,7 @@ class ChartApp extends Component {
 		console.log("Cur_objsis  "+sharedVars.get_obj())
 		// this.current_val=0
 		this.state={current_val:0}
+		this.prevColor="blue"
 
 		// InitSocketApi()
 		// SubtoSocket(this.updateChart)
@@ -44,7 +45,7 @@ class ChartApp extends Component {
             }
           });
 		// Comment the Below line inproduction!!
-		this.time_id=setInterval(this.updateChartFake, 500);
+		// this.time_id=setInterval(this.updateChartFake, 500);
 	}
 	componentWillUnmount=()=>{
 		// clearInterval(this.time_id)
@@ -57,7 +58,24 @@ class ChartApp extends Component {
 	updateChartFake=()=>{
 		yVal = Math.round(5 + Math.random() *(-5-5));
 		this.setState({current_val:yVal})
-		dps.push({x: xVal,y: yVal,lineColor:yVal>0?"#ad3d51":"#24a57c"});
+		let lastVal=dps[dps.length-1].y
+		console.log("plotting point y: "+yVal+" lastY: "+lastVal)
+		
+		if(lastVal>0&&yVal<=0){
+			dps.push({x: xVal-1,y: 0,lineColor:"red"});
+			dps.push({x: xVal,y: yVal,lineColor:"green"});
+			this.prevColor="green"
+			// xVal++;
+		}
+		else if(lastVal<0&&yVal>=0){
+			dps.push({x: xVal-1,y: 0,lineColor:"green"});
+			dps.push({x: xVal,y: yVal,lineColor:"red"});
+			this.prevColor="red";
+		}
+		else{
+			console.log("Blue  ffor "+lastVal+" "+yVal)
+		dps.push({x: xVal,y: yVal,lineColor:this.prevColor});
+		}
 		xVal++;
 		if (dps.length >  100 ) {
 			dps.shift();
@@ -69,7 +87,8 @@ class ChartApp extends Component {
 		yVal = data.value
 		this.setState({current_val:yVal})
 		// xVal=new Date().getMinutes()+":"+new Date().getSeconds()
-		dps.push({x: xVal,y: yVal});
+		// dps.push({x: xVal,y: yVal});
+		dps.push({x: xVal,y: yVal,lineColor:yVal>0?"red":"green"});
 		xVal++;
 		if (dps.length >  10 ) {
 			dps.shift();

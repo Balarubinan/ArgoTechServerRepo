@@ -22,6 +22,7 @@ import AboutComp from './About';
 import { Redirect } from 'react-router'
 import IntermediateHome from './IntermediateHome';
 import ProfileComponent from "./ProfileComponent"
+import JunkComp from './JunkComp';
 // import Chart2 from "./ReChart"
 function App(props) {
   let loggedIn=useState(true)
@@ -38,6 +39,7 @@ function App(props) {
           <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
           <Route path="/Profile" element={<ProfileComponent/>}/>
+          <Route path="/Junk" element={<JunkComp/>}/>
         </Routes>
       </Router>
       </>)
