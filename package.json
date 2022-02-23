@@ -28,6 +28,7 @@
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1"
   },
+  "nodemonConfig": { "ignore": [ "UserData/*" ] },
   "engines": {
     "node": "12.18.2"
   }
