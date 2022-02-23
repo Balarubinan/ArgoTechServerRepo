@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.use(express.json())
 
-router.get('/isValid/:user/:pass', async function(req, res){
+router.get('/isValid/:user/:pass',function(req, res){
     // response is sent as an actual object
     let isValid=false
     console.log(req.body)
@@ -23,9 +23,12 @@ router.get('/isValid/:user/:pass', async function(req, res){
    }
 );
 
-router.post('/random',()=>'imma fuck you man!!')
+router.post("/texting",(r,ee)=>{
+   console.log("This is on")
+   ee.send({"imma ere":"yoooy yoo"})
+})
 
-router.post('/saveUser/:name/:pass/:email',async function(req, res){
+router.post('/saveUser/:name/:pass/:email',function(req, res){
       console.log(req.params)
       let predata=null;
       predata=fs.readFileSync("UserData/user.txt")

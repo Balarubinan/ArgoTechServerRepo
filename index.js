@@ -38,6 +38,8 @@ app.get("/refresh",(req,res)=>{
     res.send({arrays:[dataSenders,dataViewers]})
 })
 
+
+
 app.get("/listSender",(req,res)=>{
     console.log(dataSenders)
     res.send({senders:Array.from(dataSenders.map(soc=>soc.socname))})

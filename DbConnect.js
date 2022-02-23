@@ -43,6 +43,6 @@ if(db.dataStore==null||db.user==null){
  }
 
 //  saveNewUser("Balarubinan","bala@gmail.com","MyPass")
- console.log(getUser("bala@gmail.com"))
+//  console.log(getUser("bala@gmail.com"))
 
 //  storeContact("bala","bala#hfh.com","930909094","i am mr rao")
