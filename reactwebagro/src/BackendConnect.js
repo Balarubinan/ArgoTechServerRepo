@@ -41,7 +41,7 @@ export function InitSocketApi(devname){
 export function SubtoSocket(callBack=(data)=>{console.log(data)}){
     if(socket){
         socket.on('newValue',data=>{
-            console.log("I am the one callign the callBack haha is "+JSON.stringify(data))
+            // console.log("I am the one callign the callBack haha is "+JSON.stringify(data))
             callBack(data)
         })
     }

@@ -14,7 +14,8 @@ import KLNlogo from "./KLNlogo.jpg"
 export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}  width="100%" marginLeft="0%">
-      <AppBar position="static" style={{ background: '#2E3B55' }}>
+      <AppBar position="static" style={{ background: '#2E3B55'}}>
+      {/* ,position: 'fixed' adding this makes the bar stay at top...but all it hides some parts under it*/}
         <Toolbar>
           <TemporaryDrawer/>
           <img src={LogoIcon} height="70px" width="70px"/>

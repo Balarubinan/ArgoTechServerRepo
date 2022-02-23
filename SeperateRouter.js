@@ -22,7 +22,10 @@ router.get('/isValid/:user/:pass', async function(req, res){
    res.send({status:false});
    }
 );
-router.post('/saveUser/:name/:pass/:email', function(req, res){
+
+router.post('/random',()=>'imma fuck you man!!')
+
+router.post('/saveUser/:name/:pass/:email',async function(req, res){
       console.log(req.params)
       let predata=null;
       predata=fs.readFileSync("UserData/user.txt")
@@ -51,7 +54,7 @@ router.post('/saveUser/:name/:pass/:email', function(req, res){
       }
       console.log("JSON data is saved.");
    });
-   res.send({status:"saved "})
+   res.send({stat:"saved"})
 });
 
 // all get,post method must be put before router.listen function for them to work
@@ -59,10 +62,15 @@ router.get('/getinfo', function(req, res){
    res.send({port:`${process.env.PORT}`,auth:"None"});
  });
  
-
  // Static files
  // router.use(express.static("public"));
- 
+//  add method for using contact Database
+//  add method for login as seperate component
+router.post('/saveNewContact',function(req,res){
+   console.log(req.data)
+   res.send({"stst":"check"})
+})
+
  
 
 

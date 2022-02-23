@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import ContactCollect from './ContactCollect';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,6 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function MediaCard() {
   return (
+    <>
     <div className="row">
       <div className="col-12 d-flex justify-content-center pb-4"><Card sx={{ maxWidth: "50%",minHeight:"30%" }}>
       <CardMedia
@@ -85,6 +87,10 @@ export default function MediaCard() {
       </CardContent>
         </Card></div>
     </div>
+    <div className='row'>
+      <ContactCollect/>
+    </div>
+    </>
   );
 }
 

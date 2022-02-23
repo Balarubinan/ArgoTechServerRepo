@@ -20,6 +20,7 @@ import ProjectDetailsComp from './ProjectDetails';
 import IndustryPartnerComp from './IndustryPartner';
 import AboutComp from './About';
 import { Redirect } from 'react-router'
+import ContactCollect from './ContactCollect';
 function IntermediateHome() {
     return (
         <>
@@ -31,6 +32,7 @@ function IntermediateHome() {
         <Route path="/viewTractor" element={<ChartApp/>}/>
         <Route path="/Contact" element={<ContactComp/>}/>
         <Route path="/Login" element={<LoginComp/>}/>
+        <Route path="/12" element={<ContactCollect/>}/>
         <Route path="/About" element={<AboutComp/>}/>
         <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
         <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>

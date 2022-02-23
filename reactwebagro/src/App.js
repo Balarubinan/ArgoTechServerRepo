@@ -23,11 +23,13 @@ import { Redirect } from 'react-router'
 import IntermediateHome from './IntermediateHome';
 import ProfileComponent from "./ProfileComponent"
 import JunkComp from './JunkComp';
+import SavedContactComp from './SavedContactComp'
+import ContactCollect from './ContactCollect';
 // import Chart2 from "./ReChart"
 function App(props) {
   let loggedIn=useState(true)
     return( <>
-      <ButtonAppBar/>
+      <ButtonAppBar m={10}/>
       <Router>
         <Routes>
           <Route path="/ListTractors" element={<ListConComp/>}/>
@@ -35,6 +37,8 @@ function App(props) {
           <Route path="/viewTractor" element={<ChartApp/>}/>
           <Route path="/Contact" element={<ContactComp/>}/>
           <Route path="/" element={<LoginComp/>}/>
+          <Route path="/GatherContacts" element={<SavedContactComp/>}/>
+          <Route path="/12" element={<ContactCollect/>}/>
           <Route path="/About" element={<AboutComp/>}/>
           <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
