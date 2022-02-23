@@ -36,13 +36,14 @@ function App(props) {
           <Route path="/Home" element={<ProjectDetailsComp/>}/>
           <Route path="/viewTractor" element={<ChartApp/>}/>
           <Route path="/Contact" element={<ContactComp/>}/>
-          <Route path="/" element={<LoginComp/>}/>
+          <Route path="/" element={<ProjectDetailsComp/>}/>
           <Route path="/GatherContacts" element={<SavedContactComp/>}/>
           <Route path="/12" element={<ContactCollect/>}/>
           <Route path="/About" element={<AboutComp/>}/>
           <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
           <Route path="/Profile" element={<ProfileComponent/>}/>
+          {/* Profile wil be named as Admin Login */}
           <Route path="/Junk" element={<JunkComp/>}/>
         </Routes>
       </Router>

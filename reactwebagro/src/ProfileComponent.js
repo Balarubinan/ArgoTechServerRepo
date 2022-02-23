@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -18,12 +19,19 @@ import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-
+import LoginComp from './LoginComp'
 
 function ProfileComponent() {
+  // add admin login and panel here!
+    let [loggedIn, setloggedIn] = useState(false)
     const onHandler=()=>{
         console.log("Buton clicked")
     }
+    if(!loggedIn){
+      // render admin panel here
+      return <LoginComp/>
+    }
+    else{
     return (
         <div className="row">
             <Box minWidth="80%" marginLeft="10%">
@@ -77,6 +85,8 @@ function ProfileComponent() {
             </Box>
         </div>
     )
+    }
+
 }
 
 export default ProfileComponent

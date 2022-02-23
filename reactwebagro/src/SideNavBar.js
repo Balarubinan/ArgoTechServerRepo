@@ -60,7 +60,7 @@ export default function TemporaryDrawer() {
             <ListItemText primary="Agro Tech" style={{"font-size":"50px"}} />
       </ListItem>
       <Divider />
-        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Profile"].map((text, index) => (
+        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Admin Panel"].map((text, index) => (
           <ListItem button key={text} onClick={()=>reNavToPage(text)}>
             {icons[index]}
               <Box marginLeft={2}>
