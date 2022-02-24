@@ -35,11 +35,18 @@ if(db.dataStore==null||db.user==null){
 
  function getUser(email){
     let results=db.user.find({email:email})
-    // console.log(results)
+    console.log("In get User") // returns empty
+    console.log(results)
      if(results!=null)
         return results[0]
     else
         return null
+ }
+
+ function getAllContacts(){
+     let results=db.dataStore.find()
+     console.log(results)
+     return results
  }
 
 //  saveNewUser("Balarubinan","bala@gmail.com","MyPass")
@@ -49,5 +56,6 @@ if(db.dataStore==null||db.user==null){
 module.exports={
     storeContact:storeContact,
     getUser:getUser,
-    saveNewUser:saveNewUser
+    saveNewUser:saveNewUser,
+    getAllContacts:getAllContacts
 }

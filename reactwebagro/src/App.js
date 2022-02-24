@@ -38,7 +38,7 @@ function App(props) {
           <Route path="/Contact" element={<ContactComp/>}/>
           <Route path="/" element={<ProjectDetailsComp/>}/>
           <Route path="/GatherContacts" element={<SavedContactComp/>}/>
-          <Route path="/12" element={<ContactCollect/>}/>
+          <Route path="/12" element={<SavedContactComp/>}/>
           <Route path="/About" element={<AboutComp/>}/>
           <Route path="/timeestimate" element={<TimeEstimateComp/>}/>
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>

@@ -7,15 +7,16 @@ function LoginComp() {
     const navig=useNavigate()
     const submitHandler=(event)=>{
         event.preventDefault()
-        console.log(Object.entries(new FormData(event.target)))
         let formData=new FormData(event.target)
         let data={}
         for(let entry of formData.entries())
         data[entry[0]]=entry[1]
         console.log(data)
         axios.get(`http://localhost:5000/restApi/isValid/${data.username}/${data.password}`).then(d=>{
-            if(d.data.status==true){console.log("i navig")
-                navig("/Home")}
+            if(d.data.status==true){console.log("Login success")
+                navig("/Home")}else{
+                  console.log("Not logged in")
+                }
         },d=>console.log(d))
         
         // axios.get("https://argo-server-1.herokuapp.com/restApi/isValid/IIPC/IIPCa")

@@ -42,7 +42,7 @@ Chinnavedampatti, Coimbatore,Tamilnadu, India.
       </CardActionArea>
             </Card>
             </Box>     
-            </Box>
+        </Box>
     )
 }
 

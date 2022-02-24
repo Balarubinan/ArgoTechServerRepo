@@ -11,17 +11,16 @@ router.use(express.json())
 router.get('/isValid/:user/:pass',function(req, res){
     // response is sent as an actual object
     let isValid=false
-    console.log(req.body)
+    console.log(req.params)
    //  req.on(data=>console.log(data))
    let users=null;
-   try{users=fs.readFileSync("UserData/user.txt");}catch(err){console.log("erroe herw"+err)}
-   users=JSON.parse(users)
-   for(let user of users){
-      // i stored the user as a jsonstring while writing
-      user=JSON.parse(user)
-      if(req.params.user==user.name&&req.params.pass==user.pass)
-      {res.send({status:true});return;}
-   }
+   // try{users=fs.readFileSync("UserData/user.txt");}catch(err){console.log("erroe herw"+err)}
+   // users=JSON.parse(users)
+   let result=DBop.getUser(req.params.email)
+   console.log(typeof result)
+   if(result.pass==req.params.pass)
+   res.send({status:true})
+   else
    res.send({status:false});
    }
 );
@@ -81,7 +80,8 @@ router.post('/saveNewContact/:name/:email/:number/:detail',function(req,res){
    res.send({"stst":"check"})
 })
 
- 
-
+router.get('/getAllSavedContacts',(req,res)=>{
+   res.send({"results":DBop.getAllContacts()})
+})
 
 module.exports = router;
