@@ -46,3 +46,8 @@ if(db.dataStore==null||db.user==null){
 //  console.log(getUser("bala@gmail.com"))
 
 //  storeContact("bala","bala#hfh.com","930909094","i am mr rao")
+module.exports={
+    storeContact:storeContact,
+    getUser:getUser,
+    saveNewUser:saveNewUser
+}

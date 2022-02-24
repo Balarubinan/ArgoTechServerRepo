@@ -60,7 +60,10 @@ export default App;
 // Stateless and Stateful components
 // Synthetic events
 
-//  First project is a Form creation application!!
+
 
 // fix contacts margin problem
 // fix project details Text justify problem
+// fix blue background problem
+// refactor folder structure
+// use Image BackDrop for background
