@@ -2,9 +2,17 @@ import React from 'react'
 import ThemeImage from "./AgriTheme image.jpg"
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import {useEffect} from 'react'
 
 function LoginComp() {
-    const navig=useNavigate()
+  const navig=useNavigate()
+  useEffect(() => {
+    if(window.localStorage.getItem('loggedIn')=='true'){
+      console.log('This')
+      navig("/ViewContacts")
+    }
+  }, [])
+  
     const submitHandler=(event)=>{
         event.preventDefault()
         let formData=new FormData(event.target)
@@ -13,17 +21,31 @@ function LoginComp() {
         data[entry[0]]=entry[1]
         console.log(data)
         axios.get(`http://localhost:5000/restApi/isValid/${data.username}/${data.password}`).then(d=>{
-            if(d.data.status==true){console.log("Login success")
-                navig("/Home")}else{
+            if(d.data.status==true){
+              console.log("Login success")
+              window.localStorage.setItem('loggedIn',true)
+              navig("/ViewContacts")
+            }else{
+                  console.log("Not logged in")
+                }
+        },d=>console.log(d))
+
+        axios.get(`https://argo-server-1.herokuapp.com/restApi/isValid/${data.username}/${data.password}`).then(d=>{
+            if(d.data.status==true){
+              console.log("Login success")
+              window.localStorage.setItem('loggedIn',true)
+              navig("/ViewContacts")
+            }else{
                   console.log("Not logged in")
                 }
         },d=>console.log(d))
         
         // axios.get("https://argo-server-1.herokuapp.com/restApi/isValid/IIPC/IIPCa")
-        axios.get(`https://argo-server-1.herokuapp.com/restApi/isValid/${data.username}/${data.password}`).then(d=>{
-            if(d.data.status==true){console.log("i navig")
-                navig("/Home")}
-        },d=>console.log(d))
+        // axios.get().then(d=>{
+        //     if(d.data.status==true){console.log("i navig")
+        //         navig("/Home")}
+        // },d=>console.log(d))
+        
     }
     return (
 <div className="container">

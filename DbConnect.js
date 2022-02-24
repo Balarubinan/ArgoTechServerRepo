@@ -9,6 +9,7 @@ db.connect('./UserData', ['dataStore','user']);
 if(db.dataStore==null||db.user==null){
     console.log("Db intialise error!")
 }else{
+    console.log("DB setup complete")
     // console.log(db.dataStore.find());
     // console.log(db.user.find())
 }
@@ -37,7 +38,7 @@ if(db.dataStore==null||db.user==null){
     let results=db.user.find({email:email})
     console.log("In get User") // returns empty
     console.log(results)
-     if(results!=null)
+     if(results.length>0)
         return results[0]
     else
         return null

@@ -8,7 +8,7 @@ var router = express.Router();
 router.use(express.json())
 // router.use(express.urlencoded())
 
-router.get('/isValid/:user/:pass',function(req, res){
+router.get('/isValid/:email/:pass',function(req, res){
     // response is sent as an actual object
     let isValid=false
     console.log(req.params)
@@ -18,7 +18,7 @@ router.get('/isValid/:user/:pass',function(req, res){
    // users=JSON.parse(users)
    let result=DBop.getUser(req.params.email)
    console.log(typeof result)
-   if(result.pass==req.params.pass)
+   if(result!=null&&result.pass==req.params.pass)
    res.send({status:true})
    else
    res.send({status:false});
