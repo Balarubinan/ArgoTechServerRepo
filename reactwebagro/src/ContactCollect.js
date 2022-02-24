@@ -4,6 +4,7 @@
 import React from 'react'
 import "./ContactCollect.css"
 import { useState } from 'react'
+import axios from 'axios'
 
 function ContactCollect() {
     let [subStat, setsubStat] = useState('')
@@ -13,11 +14,16 @@ function ContactCollect() {
         let phoneElem=document.getElementById('phone')
         let nameElem=document.getElementById('name')
         let emailElem=document.getElementById('email')
+        let detailsElem=document.getElementById('details')
         console.log(emailElem.value,phoneElem.value,nameElem.value)
         if(emailElem.value.length==0||nameElem.value.length==0||phoneElem.value.length==0)
             setsubStat('Fill all fields!')
         else{
-            //Write to backedn
+            console.log([nameElem.value,emailElem.value,emailElem.value,detailsElem.value])
+            // storeContact(nameElem.value,emailElem.value,phoneElem.value,detailsElem.value)
+            // axios.post(`http://localhost:5000/restApi/saveNewContact/${nameElem.value}/${emailElem.value}/${emailElem.value}/${detailsElem.value}`).then().catch(e=>console.log(e))
+            // http://argo-server-1.herokuapp.com/
+            axios.post(`http://argo-server-1.herokuapp.com/restApi/saveNewContact/${nameElem.value}/${emailElem.value}/${emailElem.value}/${detailsElem.value}`).then().catch(e=>console.log(e))
             setsubStat('Submit Success!')
         }
 
@@ -64,7 +70,7 @@ function ContactCollect() {
                         <div className="input-group-addon  pt-1"> <i className="fa fa-envelope text-primary"></i> </div> <input type="text" className="form-control border-0" id="phone"/>
                     </div>
                 </div>
-                <div className="form-group"> <label for="msg" className="h6">Further Details</label> <textarea name="message" id="details" cols="10" rows="5" className="form-control bg-light" placeholder="Add purpose , organisation , or a general note"></textarea> </div>
+                <div className="form-group"> <label for="msg" className="h6">Your Queries</label> <textarea name="message" id="details" cols="10" rows="5" className="form-control bg-light" placeholder="Add purpose , organisation , or a general note"></textarea> </div>
                 <div className="form-group d-flex justify-content-center mt-2">
                     <input type="button" className="btn btn-primary text-white" value="Submit details" onClick={e=>checkDetails(e)}/> 
                 </div>

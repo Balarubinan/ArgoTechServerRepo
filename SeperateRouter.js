@@ -34,11 +34,6 @@ router.post("/texting",(r,ee)=>{
 
 router.post('/saveUser/:name/:pass/:email',function(req, res){
       console.log(req.params)
-      let predata=null;
-      predata=fs.readFileSync("UserData/user.txt")
-      predata=JSON.parse(predata)
-   // preData is an array of users
-     console.log(predata+"ddsdsfdd")
    // create a JSON object
    const user = {
       "name": req.params.name,
