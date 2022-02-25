@@ -1,4 +1,4 @@
-var DBop=require('./dbconnect.js')
+var DBop=require('./dbconnect')
 var express = require('express');
 const fs = require('fs');
 var router = express.Router();
