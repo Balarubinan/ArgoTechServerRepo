@@ -7,6 +7,12 @@ import KLNlogo from "./KLNlogo.jpg"
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
@@ -20,6 +26,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ProjectDetailsComp() {
   return (
+    <>
+    <BrowserView>
     <>
     <div className='row'>
       <div className="col-2"><img src={KLNlogo} height="150px" width="150px"/></div>
@@ -53,6 +61,11 @@ export default function ProjectDetailsComp() {
       Order No:  DST/TDT/AGRO-12/2019
       </Typography>
     </Stack>
+    </>
+    </BrowserView>
+    <MobileView>
+      this i mobile mother Fucker!
+    </MobileView>
     </>
   );
 }
