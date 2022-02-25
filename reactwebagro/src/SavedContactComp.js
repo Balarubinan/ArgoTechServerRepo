@@ -8,19 +8,22 @@ import { CardActionArea } from '@mui/material';
 import Box from "@mui/material/Box"
 import axios from 'axios';
 import {useState,useEffect} from 'react'
+import {motion} from 'framer-motion'
 
 function SavedContactComp() {
     const [contacts, setcontacts] = useState([])
     useEffect(() => {
         console.log('Useeffect Logs')
-        // axios.get("http://localhost:5000/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
-        axios.get("https://argo-server-1.herokuapp.com/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
+        axios.get("http://localhost:5000/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
+        // axios.get("https://argo-server-1.herokuapp.com/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
     }, [])
 
   return (
     <Box width="80%" marginLeft="10%" maxWidth={1000}> 
         
             {contacts.length>0&&contacts.map((e,i,arr)=>(
+        <motion.div animate={{ y:"-2%" }} initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }} whileHover={{scale:1.1}}>
         <Box marginTop="2%">
         <Card sx={{ flexgrow:1 }}>
       <CardActionArea>
@@ -39,7 +42,7 @@ function SavedContactComp() {
       </CardActionArea>
         </Card>
         </Box>
-            ))
+        </motion.div>))
         }
     </Box>
   )
