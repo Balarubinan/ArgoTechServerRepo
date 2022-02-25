@@ -22,8 +22,8 @@ function SavedContactComp() {
     <Box width="80%" marginLeft="10%" maxWidth={1000}> 
         
             {contacts.length>0&&contacts.map((e,i,arr)=>(
-        <motion.div animate={{ y:"-2%" }} initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }} whileHover={{scale:1.1}}>
+        <motion.div  initial={{ opacity: 0,x:"-10%" }}
+        animate={{ opacity: 1,x:"0%" }} whileHover={{scale:1.1}} whileTap={{scale:1.1}}>
         <Box marginTop="2%">
         <Card sx={{ flexgrow:1 }}>
       <CardActionArea>
