@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 var cors=require('cors')
 const socket = require("socket.io");
-var serverRouter=require('./SeperateRouter.js');
+var serverRouter=require('./seperaterouter');
 const { ConnectionClosedEvent } = require('mongodb');
 
 var app = express();
