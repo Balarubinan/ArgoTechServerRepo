@@ -14,8 +14,8 @@ function SavedContactComp() {
     const [contacts, setcontacts] = useState([])
     useEffect(() => {
         console.log('Useeffect Logs')
-        // axios.get("http://localhost:5000/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
-        axios.get("https://argo-server-1.herokuapp.com/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
+        axios.get("http://localhost:5000/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
+        // axios.get("https://argo-server-1.herokuapp.com/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
     }, [])
 
   return (
