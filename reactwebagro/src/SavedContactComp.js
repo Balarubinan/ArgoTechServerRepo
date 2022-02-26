@@ -9,12 +9,13 @@ import Box from "@mui/material/Box"
 import axios from 'axios';
 import {useState,useEffect} from 'react'
 import {motion} from 'framer-motion'
+import {baseUrl} from './URLS'
 
 function SavedContactComp() {
     const [contacts, setcontacts] = useState([])
     useEffect(() => {
         console.log('Useeffect Logs')
-        axios.get("http://localhost:5000/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
+        axios.get(`${baseUrl}/restApi/getAllSavedContacts`).then(d=>{console.log(d.data);setcontacts(d.data.results)})
         // axios.get("https://argo-server-1.herokuapp.com/restApi/getAllSavedContacts").then(d=>{console.log(d.data);setcontacts(d.data.results)})
     }, [])
 
@@ -22,19 +23,19 @@ function SavedContactComp() {
     <Box width="80%" marginLeft="10%" maxWidth={1000}> 
         
             {contacts.length>0&&contacts.map((e,i,arr)=>(
-        <motion.div  initial={{ opacity: 0,x:"-10%" }}
-        animate={{ opacity: 1,x:"0%" }} whileHover={{scale:1.1}} whileTap={{scale:1.1}}>
+        <motion.div initial={{ opacity: 0,x:"-10%" }}
+        animate={{ opacity: 1,x:"0%" }} whileHover={{scale:1.1}} whileTap={{scale:1.1}}  key={i}>
         <Box marginTop="2%">
         <Card sx={{ flexgrow:1 }}>
       <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h7" component="div" key={i}>
+        <CardContent >
+          <Typography gutterBottom variant="h7" component="div">
             Name: {e.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Query: {e.info}
           </Typography>
-          <Typography gutterBottom variant="h7" component="div" key={i}>
+          <Typography gutterBottom variant="h7" component="div" >
             Phone: <Typography  color="text.secondary">{e.number}</Typography>
             Email: <Typography  color="text.secondary">{e.email}</Typography>
           </Typography>

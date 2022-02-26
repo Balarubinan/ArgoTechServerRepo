@@ -3,6 +3,7 @@ import ThemeImage from "./AgriTheme image.jpg"
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {useEffect} from 'react'
+import {baseUrl} from './URLS'
 
 function LoginComp() {
   const navig=useNavigate()
@@ -20,7 +21,7 @@ function LoginComp() {
         for(let entry of formData.entries())
         data[entry[0]]=entry[1]
         console.log(data)
-        axios.get(`http://localhost:5000/restApi/isValid/${data.username}/${data.password}`).then(d=>{
+        axios.get(`${baseUrl}/restApi/isValid/${data.username}/${data.password}`).then(d=>{
             if(d.data.status==true){
               console.log("Login success")
               window.localStorage.setItem('loggedIn',true)
@@ -30,15 +31,15 @@ function LoginComp() {
                 }
         },d=>console.log(d))
 
-        axios.get(`https://argo-server-1.herokuapp.com/restApi/isValid/${data.username}/${data.password}`).then(d=>{
-            if(d.data.status==true){
-              console.log("Login success")
-              window.localStorage.setItem('loggedIn',true)
-              navig("/ViewContacts")
-            }else{
-                  console.log("Not logged in")
-                }
-        },d=>console.log(d))
+        // axios.get(`https://argo-server-1.herokuapp.com/restApi/isValid/${data.username}/${data.password}`).then(d=>{
+        //     if(d.data.status==true){
+        //       console.log("Login success")
+        //       window.localStorage.setItem('loggedIn',true)
+        //       navig("/ViewContacts")
+        //     }else{
+        //           console.log("Not logged in")
+        //         }
+        // },d=>console.log(d))
         
         // axios.get("https://argo-server-1.herokuapp.com/restApi/isValid/IIPC/IIPCa")
         // axios.get().then(d=>{

@@ -5,6 +5,7 @@ import React from 'react'
 import "./ContactCollect.css"
 import { useState } from 'react'
 import axios from 'axios'
+import {baseUrl} from './URLS'
 
 function ContactCollect() {
     let [subStat, setsubStat] = useState('')
@@ -21,9 +22,7 @@ function ContactCollect() {
         else{
             console.log([nameElem.value,emailElem.value,emailElem.value,detailsElem.value])
             // storeContact(nameElem.value,emailElem.value,phoneElem.value,detailsElem.value)
-            // axios.post(`http://localhost:5000/restApi/saveNewContact/${nameElem.value}/${emailElem.value}/${emailElem.value}/${detailsElem.value}`).then().catch(e=>console.log(e))
-            // http://argo-server-1.herokuapp.com/
-            axios.post(`http://argo-server-1.herokuapp.com/restApi/saveNewContact/${nameElem.value}/${emailElem.value}/${emailElem.value}/${detailsElem.value}`).then().catch(e=>console.log(e))
+            axios.post(`${baseUrl}/restApi/saveNewContact/${nameElem.value}/${emailElem.value}/${emailElem.value}/${detailsElem.value}`).then().catch(e=>console.log(e))
             setsubStat('Submit Success!')
         }
 
