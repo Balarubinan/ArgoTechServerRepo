@@ -15,7 +15,7 @@ import Grid from '@mui/material/Grid';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import ContactCollect from './ContactCollect';
-
+import ParthaSirImg from './images/parthaSir.jpeg'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -33,7 +33,7 @@ export default function MediaCard() {
       <CardMedia
         component="img"
         height="140"
-        image={AvatarImg}
+        image={ParthaSirImg}
         alt="green iguana"
       />
       <CardContent>

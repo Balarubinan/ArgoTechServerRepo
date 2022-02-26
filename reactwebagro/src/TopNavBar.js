@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import TemporaryDrawer from './SideNavBar';
 import { AccordionDetails } from '@mui/material';
 import LogoIcon from "./AgriLogo.png"
-import KLNlogo from "./KLNlogo.jpg"
+import KLNlogo from "./KLNlogoBg.png"
 // import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar() {
