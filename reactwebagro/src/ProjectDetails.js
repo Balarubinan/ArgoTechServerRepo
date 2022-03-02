@@ -40,15 +40,17 @@ export default function ProjectDetailsComp() {
     <>
     <div className='row'>
       <div className="col-2"><img src={KLNlogo} height="150px" width="120px"/></div>
-      <div className="col-8"><Stack direction="column">
-        <Typography variant="h3" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={3}>
+      <div className="col-8">
+        <Stack direction="column">
+        <Typography variant="h3" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={1}>
         Laser Based Land Leveler 
       </Typography>
       <Typography variant="h5" textAlign={"center"}   style={{ "color": '#2E3B55' }} gutterBottom>
       with Remote Monitoring
       </Typography>
       <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-      DEPARTMENT OF SCIENCE & TECHNOLOGY (DST), New Delhi
+      K.L.N College of Engineering<br/>
+      (An autonomous Institution affliated to Anna University)
       </Typography>
         </Stack></div>
       <div className="col-2"><img src={DSTLogo} height="150px" width="150px"/></div>
@@ -58,22 +60,24 @@ export default function ProjectDetailsComp() {
         <Box sx={{width:"50%"}}>
                 <motion.div initial={{ opacity: 0,x:"10%" }}
                   animate={{ opacity: 1,x:"0%" }}>
-                <Box direction="column" marginTop={6}>
-                  <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-                  Principal Investigator (PI): Dr. S.PARTHASARATHY, Prof / EEE, 
+                <Box direction="column" marginTop={2}> 
+                {/* style={{backgroundColor:"rgba(20,20,20,.2)"}} */}
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+                    Order No:<br/>DST/TDT/AGRO-12/2019
+                  </Typography>
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+                    Funded By:<br/>Department of Science and Technology 
+                  </Typography>
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={3} gutterBottom>
+                  Principal Investigator (PI):<br/>Dr. S.PARTHASARATHY <br/> Prof / EEE <br/>
                   Head Industrial Relations & IIPC - Chief Coordinator
                     </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={6} gutterBottom>
-                    Co-Principal Investigator (Co-PI): Dr.A.V.Ram Prasad, Prof / ECE  
+                    <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={3} gutterBottom>
+                    Co-Principal Investigator (Co-PI):<br/> Dr.A.V.Ram Prasad, Prof / ECE  
                     </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-                    Co-Principal Investigator (Co-PI): Prof.S.Nallathambi,AP/Mech
-                    </Typography><Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-                    Project Period: 2019-2021
-                    </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-                    Order No:  DST/TDT/AGRO-12/2019
-                    </Typography>
+                    <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={3} gutterBottom>
+                    Co-Principal Investigator (Co-PI):<br/> Prof.S.Nallathambi,AP/Mech
+                    </Typography> 
               </Box>
               </motion.div>
         </Box>
@@ -90,17 +94,20 @@ export default function ProjectDetailsComp() {
     <MobileView>
     <div className='row'>
       <div className="col-2"><img src={KLNlogo} height="70px" width="50px"/></div>
-      <div className="col-8"><Stack direction="column">
-        <Typography variant="h6" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={3}>
-        LASER BASED LAND LEVELER 
+      <div className="col-8">
+      <Stack direction="column">
+        <Typography variant="h6" gutterBottom component="div" textAlign={"center"} style={{ "color": '#2E3B55' }} pt={1}>
+        Laser Based Land Leveler 
       </Typography>
       <Typography variant="h7" textAlign={"center"}   style={{ "color": '#2E3B55' }} gutterBottom>
       with Remote Monitoring
       </Typography>
       <Typography variant="h7" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-      DEPARTMENT OF SCIENCE & TECHNOLOGY (DST), New Delhi
+      K.L.N College of Engineering<br/>
+      (An autonomous Institution affliated to Anna University)
       </Typography>
-        </Stack></div>
+        </Stack>
+       </div>
       <div className="col-2"><img src={DSTLogo} height="70px" width="50px"/></div>
     </div>
     <Box>
@@ -114,23 +121,25 @@ export default function ProjectDetailsComp() {
         <Box>
                 <motion.div initial={{ opacity: 0,x:"10%" }}
         animate={{ opacity: 1,x:"0%" }}>
-                <Box direction="column" marginTop={6}>
-                  <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-                  Principal Investigator (PI): Dr. S.PARTHASARATHY, Prof / EEE, 
+          <Box direction="column" marginTop={2}> 
+                {/* style={{backgroundColor:"rgba(20,20,20,.2)"}} */}
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+                    Order No:<br/>DST/TDT/AGRO-12/2019
+                  </Typography>
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
+                    Funded By:<br/>Department of Science and Technology 
+                  </Typography>
+                  <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={3} gutterBottom>
+                  Principal Investigator (PI):<br/>Dr. S.PARTHASARATHY <br/> Prof / EEE <br/>
                   Head Industrial Relations & IIPC - Chief Coordinator
                     </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={6} gutterBottom>
-                    Co-Principal Investigator (Co-PI): Dr.A.V.Ram Prasad, Prof / ECE  
+                    <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }}  mb={3} gutterBottom>
+                    Co-Principal Investigator (Co-PI):<br/> Dr.A.V.Ram Prasad, Prof / ECE  
                     </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={6} gutterBottom>
-                    Co-Principal Investigator (Co-PI): Prof.S.Nallathambi,AP/Mech
-                    </Typography><Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-                    Project Period: 2019-2021
-                    </Typography>
-                    <Typography variant="h5" textAlign={"center"}  style={{ "color": '#2E3B55' }} gutterBottom>
-                    Order No:  DST/TDT/AGRO-12/2019
-                    </Typography>
-              </Box>
+                    <Typography variant="h6" textAlign={"center"}  style={{ "color": '#2E3B55' }} mb={3} gutterBottom>
+                    Co-Principal Investigator (Co-PI):<br/> Prof.S.Nallathambi,AP/Mech
+                    </Typography> 
+          </Box>
               </motion.div>
         </Box>
       {/* </Stack> */}

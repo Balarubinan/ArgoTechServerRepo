@@ -25,11 +25,15 @@ import ProfileComponent from "./ProfileComponent"
 import JunkComp from './JunkComp';
 import SavedContactComp from './SavedContactComp'
 import ContactCollect from './ContactCollect';
+import backgroundImg from './images/dummyBackground.jpg'
 // import Chart2 from "./ReChart"
 function App(props) {
   let loggedIn=useState(true)
-    return( <>
-      <ButtonAppBar m={10}/>
+    return( 
+      <>
+      {/* <div style={{ backgroundImage:`url(${backgroundImg})` }}>  use when you find a good background*/}
+
+      <ButtonAppBar m={10} />
       <Router>
         <Routes>
           <Route path="/ListTractors" element={<ListConComp/>}/>
@@ -47,9 +51,12 @@ function App(props) {
           <Route path="/Junk" element={<JunkComp/>}/>
         </Routes>
       </Router>
-      </>)
+      {/* </div> */}
+      </>
+    )
 }
-// it doesn't matter under what name you Export it would still work
+// it doesn't matter under what name you Export it would still work 
+//style={{ backgroundImage: "url(/image.png)"
 export default App;
 
 

@@ -15,7 +15,7 @@ import Grid from '@mui/material/Grid';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import ContactCollect from './ContactCollect';
-import ParthaSirImg from './images/parthaSir.jpeg'
+import ParthaSirImg from './images/parthaSirImg.jpeg'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -29,13 +29,18 @@ export default function MediaCard() {
   return (
     <>
     <div className="row">
-      <div className="col-12 d-flex justify-content-center pb-4"><Card sx={{ maxWidth: "50%",minHeight:"30%" }}>
-      <CardMedia
+      <div className="col-12 d-flex justify-content-center pb-4"><Card sx={{ maxWidth: "70%",minHeight:"30%" }}>
+      {/* <CardMedia
         component="img"
-        height="140"
+        height="200"
+        width="200"
         image={ParthaSirImg}
         alt="green iguana"
       />
+       */}
+       <div className="d-flex justify-content-center" >
+       <img src={ParthaSirImg} height="200" width="200" style={{borderRadius:"10%"}} textAlign="center"/>
+       </div>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div"  textAlign="center">
         Dr. S.Parthasarathy
@@ -48,7 +53,7 @@ export default function MediaCard() {
         </Typography>
       </CardContent>
         </Card></div>
-      <div className="col-12 d-flex justify-content-center pb-4" ><Card sx={{ maxWidth:"50%"  ,minHeight:"30%" }} >
+      <div className="col-12 d-flex justify-content-center pb-4" ><Card sx={{ maxWidth:"70%"  ,minHeight:"30%" }} >
       <CardMedia
         component="img"
         height="140"
@@ -67,7 +72,7 @@ export default function MediaCard() {
         </Typography>
       </CardContent>
         </Card></div>
-      <div className="col-12 d-flex justify-content-center pb-4"><Card sx={{ maxWidth:"50%"  ,minHeight:"30%" }}>
+      <div className="col-12 d-flex justify-content-center pb-4"><Card sx={{ maxWidth:"70%"  ,minHeight:"30%" }}>
       <CardMedia
         component="img"
         height="140"
