@@ -32,6 +32,10 @@ app.use(express.static('StaitcBootStrap'));
 app.use("/assets", express.static(__dirname + "/StaitcBootStrap/assets"));
 app.use(express.json()); // was originally body-parser.json()
 
+
+app.use("/gallery", express.static(__dirname + "/galleryImages"));
+app.use(express.json()); // was originally body-parser.json()
+
 app.get("/refresh",(req,res)=>{
     dataSenders=[]
     dataViewers=[]

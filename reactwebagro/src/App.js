@@ -26,6 +26,8 @@ import JunkComp from './JunkComp';
 import SavedContactComp from './SavedContactComp'
 import ContactCollect from './ContactCollect';
 import backgroundImg from './images/dummyBackground.jpg'
+import GalleryComp from './GalleryComp'
+import PopupModalComp from './PopupModalComp'
 // import Chart2 from "./ReChart"
 function App(props) {
   let loggedIn=useState(true)
@@ -48,7 +50,8 @@ function App(props) {
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
           <Route path="/Profile" element={<ProfileComponent/>}/>
           {/* Profile wil be named as Admin Login */}
-          <Route path="/Junk" element={<JunkComp/>}/>
+          <Route path="/test" element={<GalleryComp/>}/>
+          <Route path="/test2" element={<PopupModalComp/>}/>
         </Routes>
       </Router>
       {/* </div> */}

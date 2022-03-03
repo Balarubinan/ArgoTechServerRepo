@@ -79,4 +79,14 @@ router.get('/getAllSavedContacts',(req,res)=>{
    res.send({"results":DBop.getAllContacts()})
 })
 
+
+router.get('/imagesList',(req,res)=>{
+   const testFolder = 'galleryImages';
+   urlsList=[]
+   fs.readdirSync(testFolder).forEach(file => {
+      console.log(file);
+      urlsList.push(file)
+   });
+   res.send({"imageUrls":urlsList})
+})
 module.exports = router;
