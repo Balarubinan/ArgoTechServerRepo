@@ -50,7 +50,7 @@ function App(props) {
           <Route path="/IndustryPartner" element={<IndustryPartnerComp/>}/>
           <Route path="/Profile" element={<ProfileComponent/>}/>
           {/* Profile wil be named as Admin Login */}
-          <Route path="/test" element={<GalleryComp/>}/>
+          <Route path="/Gallery" element={<GalleryComp/>}/>
           <Route path="/test2" element={<PopupModalComp/>}/>
         </Routes>
       </Router>

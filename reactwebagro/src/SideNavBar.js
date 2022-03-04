@@ -16,7 +16,9 @@ import {GoGraph} from "react-icons/go"
 import {MdTimer} from "react-icons/md"
 import {GiThreeFriends} from "react-icons/gi"
 import {CgProfile} from "react-icons/cg"
+import {RiGalleryFill} from "react-icons/ri"
 import 'bootstrap/dist/css/bootstrap.css';
+import GalleryComp from './GalleryComp';
 
 // GrContactInfo
 // GiThreeFriends
@@ -46,8 +48,8 @@ export default function TemporaryDrawer() {
   const reNavToPage=(itemName)=>{
     console.log(itemName);console.log("Was clciked")
   }
-  const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate","/Profile"]
-  const icons=[<AiFillHome/>,<AiOutlineInfoCircle color="black"/>,<GrContactInfo/>,<GiThreeFriends/>,<GoGraph/>,<MdTimer/>,<CgProfile/>]
+  const links=["/Home","/About","/Contact","/IndustryPartner","/ListTractors","/timeestimate","/Profile","/Gallery"]
+  const icons=[<AiFillHome/>,<AiOutlineInfoCircle color="black"/>,<GrContactInfo/>,<GiThreeFriends/>,<GoGraph/>,<MdTimer/>,<CgProfile/>,<RiGalleryFill/>]
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -60,7 +62,7 @@ export default function TemporaryDrawer() {
             <ListItemText primary="Agro Tech" style={{"font-size":"50px"}} />
       </ListItem>
       <Divider />
-        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Admin Panel"].map((text, index) => (
+        {['Home',"About",'Contact','Industrial Partners', 'Land Level Monitoring','Time Estimation',"Admin Panel","Project gallery"].map((text, index) => (
           <ListItem button key={text} onClick={()=>reNavToPage(text)}>
             {icons[index]}
               <Box marginLeft={2}>

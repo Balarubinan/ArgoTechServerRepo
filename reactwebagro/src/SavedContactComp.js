@@ -22,7 +22,7 @@ function SavedContactComp() {
 
   return (
     <Box width="80%" marginLeft="10%" maxWidth={1000}> 
-        <MobileView>the cards are not rendering in mobile!!</MobileView>
+        {/* <MobileView>the cards are not rendering in mobile!!</MobileView> */}
             {contacts.length>0&&contacts.map((e,i,arr)=>(
         <motion.div initial={{ opacity: 0,x:"-10%" }}
         animate={{ opacity: 1,x:"0%" }} whileHover={{scale:1.1}} whileTap={{scale:1.1}}  key={i}>

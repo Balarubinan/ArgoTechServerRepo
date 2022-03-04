@@ -13,31 +13,28 @@ import {
     isBrowser,
     isMobile
   } from "react-device-detect";
-  
+import {motion} from 'framer-motion'
 
-const style = {
-  position: 'absolute',
-//   top: '50%',
-  left: '25%',
-  maxWidth: 400,
-  maxHeight: 400,
-};
+const style ={ 
+// top: '50%',
+// left: '50%',
+transform: 'translate(0%, 50%)',
+// width: 100,
+// height:100,
+// bgcolor: 'background.paper',
+// border: '2px solid #000',
+}
 
 export default function GalleryComp() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [curContent,setContent] = React.useState(null)
-    let device=null,cols=4,margin=15,height=700,width=1000,modalMargin=15;
+    let device=null,cols=4,margin=15,height=700,width=900,modalMargin=15;
 
     let [itemNameArr,setItemArr]=useState([])
     useEffect(() => {
         //set device here
-        if(!isMobile==true){
-            // mobile not working properly
-            console.log("Mobile mode")
-            cols=2;margin=5;height=400;width=400;modalMargin=0;
-        }
         axios.get(`${baseUrl}/restApi/imagesList`).then(d=>{
             let itemNameArr=d.data.imageUrls
             console.log(d.data.imageUrls)
@@ -50,20 +47,25 @@ export default function GalleryComp() {
 
         setOpen(true)
         let item=itemNameArr[i]
+        let h=isMobile?400:height;
+        let w=isMobile?400:width;
         let jsx=<img 
         src={`${item.img}`}
         // srcSet={`${item.img}`}
         alt={item.title}
         loading="lazy"
-        height={`${height}px`} width={`${width}px`}
+        height={`${h}px`} width={`${w}px`}
+        // height={`400px`} width={`400px`}
         style={{borderRadius:"10%"}}/>
         setContent(jsx)
     }
   return (
-    <Box marginLeft={`${margin}%`} marginRight={`${margin}%`}>
-        <ImageList sx={{ maxWidth: 1000, maxHeight:700 }} cols={`${cols}`} rowHeight={300}>
+   <Box>
+      <BrowserView>
+      <Box marginLeft={"15%"} marginRight={"15%"}>
+        <ImageList sx={{ maxWidth: 1000, maxHeight:700 }} cols={4} rowHeight={300}>
       {itemNameArr.map((item,i,arr) => (
-          <div onClick={()=>imageHandle(i)}>
+          <motion.div initial={{scale:0.5}} animate={{scale:1}} onClick={()=>imageHandle(i)}>
               <Box sx={{height: 300,}} mt={1} ml={1} >
             <ImageListItem key={item.img}>
           <img 
@@ -75,7 +77,7 @@ export default function GalleryComp() {
           />
             </ImageListItem>
         </Box>
-            </div>
+            </motion.div>
       ))}
         </ImageList>
         <Modal
@@ -90,9 +92,48 @@ export default function GalleryComp() {
   maxWidth: 400,
   maxHeight: 400,
 }}>
+          <motion.div initial={{scale:0.1}} animate={{scale:1}}>
           {curContent}
+        </motion.div>
         </Box>
       </Modal>
-    </Box>
+      </Box>
+      </BrowserView>
+      {/* let device=null,cols=4,margin=15,height=700,width=1000,modalMargin=15; */}
+      <MobileView>
+      <Box marginLeft={`5%`} marginRight={"5%"} >
+      
+        <ImageList sx={{maxHeight:700 }} cols={2} rowHeight={250}>
+      {itemNameArr.map((item,i,arr) => (
+          <div onClick={()=>imageHandle(i)}>
+              <Box  mt={1} ml={1} >
+            <ImageListItem key={item.img}>
+          <img 
+            src={`${item.img}`}
+            // srcSet={`${item.img}`}
+            height="250"
+            alt={item.title}
+            loading="lazy"
+            style={{borderRadius:"10%"}}
+          />
+            </ImageListItem>
+        </Box>
+            </div>
+      ))}
+        </ImageList>
+        <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box style={style}>
+        <motion.div initial={{scale:0.5}} animate={{scale:1}}>
+          {curContent}
+        </motion.div>
+        </Box>
+      </Modal>
+      </Box>
+      </MobileView>
+   </Box>
   );
 }
