@@ -14,6 +14,17 @@ import {
     isMobile
   } from "react-device-detect";
 import {motion} from 'framer-motion'
+import {
+  onSwiped,
+  onSwipedLeft, 
+  onSwipedRight,
+  onSwipedUp,
+  onSwipedDown, 
+  onSwipeStart, 
+  onSwiping,
+  onTap
+} from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 
 const style ={ 
 // top: '50%',
@@ -27,12 +38,30 @@ transform: 'translate(0%, 50%)',
 
 export default function GalleryComp() {
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    let [curIndex,setIndex]=useState(0)
     const [curContent,setContent] = React.useState(null)
+    let [itemNameArr,setItemArr]=useState([])
     let device=null,cols=4,margin=15,height=700,width=900,modalMargin=15;
 
-    let [itemNameArr,setItemArr]=useState([])
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const handlers = useSwipeable({
+      onSwipedLeft: () =>leftSwipe(),
+      onSwipedRight: () => rightSwipe(),
+      preventDefaultTouchmoveEvent: true,
+      trackMouse: true
+    });
+
+    const leftSwipe=(SwipeData)=>{
+      imageHandle(curIndex+1>=itemNameArr.length?curIndex:curIndex+1)
+      // console.log("Before call"+(curIndex+1))
+    }
+
+    const rightSwipe=(SwipeData)=>{
+      imageHandle(curIndex-1<0?curIndex:curIndex-1)
+      // console.log("Before call"+(curIndex+1))
+    }
+
     useEffect(() => {
         //set device here
         axios.get(`${baseUrl}/restApi/imagesList`).then(d=>{
@@ -46,6 +75,8 @@ export default function GalleryComp() {
     let imageHandle=(i)=>{
 
         setOpen(true)
+        console.log("Received as"+i)
+        setIndex(i)
         let item=itemNameArr[i]
         let h=isMobile?400:height;
         let w=isMobile?400:width;
@@ -126,7 +157,7 @@ export default function GalleryComp() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
-        <Box style={style}>
+        <Box style={style} {...handlers}>
         <motion.div initial={{scale:0.5}} animate={{scale:1}}>
           {curContent}
         </motion.div>
