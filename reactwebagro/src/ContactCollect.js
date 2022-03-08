@@ -17,6 +17,7 @@ function ContactCollect() {
         let emailElem=document.getElementById('email')
         let detailsElem=document.getElementById('details')
         console.log(emailElem.value,phoneElem.value,nameElem.value)
+        // add regex verification here
         if(emailElem.value.length==0||nameElem.value.length==0||phoneElem.value.length==0)
             setsubStat('Fill all fields!')
         else{

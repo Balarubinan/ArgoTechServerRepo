@@ -25,7 +25,10 @@ import {
   onTap
 } from "react-swipeable";
 import { useSwipeable } from "react-swipeable";
-
+import "./ContactCollect.css" 
+import {BiLeftArrow,BiRightArrow} from "react-icons/bi"
+import Typography from '@mui/material/Typography';
+// this css has the floating div css in it
 const style ={ 
 // top: '50%',
 // left: '50%',
@@ -61,6 +64,16 @@ export default function GalleryComp() {
       imageHandle(curIndex-1<0?curIndex:curIndex-1)
       // console.log("Before call"+(curIndex+1))
     }
+    const handleClickModal=()=>{
+      // simpley opens the current image in new tab
+      // phone view uses it to display image in big size
+      console.log(`${itemNameArr[curIndex]}`)
+      window.open(`${itemNameArr[curIndex].img}`, "_blank")
+      // if(dir=="n")
+      // imageHandle(curIndex+1>=itemNameArr.length?curIndex:curIndex+1)
+      // else
+      // imageHandle(curIndex-1<0?curIndex:curIndex-1)
+    }
 
     useEffect(() => {
         //set device here
@@ -93,6 +106,7 @@ export default function GalleryComp() {
   return (
    <Box>
       <BrowserView>
+      <Typography textAlign={"center"}  gutterBottom variant="h2" component="div" style={{ "color": '#2E3B55' }}>Gallery</Typography>
       <Box marginLeft={"15%"} marginRight={"15%"}>
         <ImageList sx={{ maxWidth: 1000, maxHeight:700 }} cols={4} rowHeight={300}>
       {itemNameArr.map((item,i,arr) => (
@@ -123,7 +137,7 @@ export default function GalleryComp() {
   maxWidth: 400,
   maxHeight: 400,
 }}>
-          <motion.div initial={{scale:0.1}} animate={{scale:1}}>
+        <motion.div initial={{scale:0.1}} animate={{scale:1}}>
           {curContent}
         </motion.div>
         </Box>
@@ -133,10 +147,10 @@ export default function GalleryComp() {
       {/* let device=null,cols=4,margin=15,height=700,width=1000,modalMargin=15; */}
       <MobileView>
       <Box marginLeft={`5%`} marginRight={"5%"} >
-      
+      <Typography textAlign={"center"}  gutterBottom variant="h3" component="div" style={{ "color": '#2E3B55' }}>Gallery</Typography>
         <ImageList sx={{maxHeight:700 }} cols={2} rowHeight={250}>
       {itemNameArr.map((item,i,arr) => (
-          <div onClick={()=>imageHandle(i)}>
+          <div onClick={()=>handleClickModal()}>
               <Box  mt={1} ml={1} >
             <ImageListItem key={item.img}>
           <img 
@@ -158,7 +172,7 @@ export default function GalleryComp() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box style={style} {...handlers}>
-        <motion.div initial={{scale:0.5}} animate={{scale:1}}>
+        <motion.div initial={{scale:0.5}} animate={{scale:1}} onClick={e=>handleClickModal()}>
           {curContent}
         </motion.div>
         </Box>
