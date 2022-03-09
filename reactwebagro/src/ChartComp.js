@@ -45,7 +45,7 @@ class ChartApp extends Component {
             }
           });
 		// Comment the Below line inproduction!!
-		// this.time_id=setInterval(this.updateChartFake, 500);
+		this.time_id=setInterval(this.updateChartFake, 1000);
 	}
 	componentWillUnmount=()=>{
 		// clearInterval(this.time_id)
@@ -99,7 +99,7 @@ class ChartApp extends Component {
 		const options = {
 			
 			title :{
-				text: "Readings from Device :"+get_obj()
+				text: "Live Land Level from :"+get_obj()
 			},
 			data: [{
 				type: "line",

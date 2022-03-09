@@ -32,7 +32,7 @@ export default class ListConComp extends Component {
         GetSenderList().then(data=>{
             console.log(data.data.senders)
             // this.setState({dev_names:data.data.senders})
-            this.setState({dev_names:[...data.data.senders,"defult sender"]})
+            this.setState({dev_names:[...data.data.senders,"Demo Graph"]})
         },()=>{})
         console.log("dev name"+JSON.stringify(this.state.dev_names))
     }

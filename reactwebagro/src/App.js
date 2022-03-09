@@ -51,7 +51,8 @@ function App(props) {
           <Route path="/Profile" element={<ProfileComponent/>}/>
           {/* Profile wil be named as Admin Login */}
           <Route path="/Gallery" element={<GalleryComp/>}/>
-          <Route path="/test2" element={<PopupModalComp/>}/>
+          <Route path="/test2" element={<JunkComp/>}/>
+          {/* junk comp is a class */}
         </Routes>
       </Router>
       {/* </div> */}

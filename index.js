@@ -79,6 +79,8 @@ io.on("connection", function (socket) {
         socket.on("valueUpdate",data=>{console.log(data)})
         dataSenders.push(new SensorSocket(data.devicename,socket.id))
         console.log("Accepted a Sender")
+        //do here : emit a signal to all the viewers and make them recieve it so that 
+        // restapi need no be called everysingle time
       }
       else if(data.type=="view"){
           dataViewers.push(socket)
