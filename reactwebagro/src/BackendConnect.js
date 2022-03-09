@@ -1,12 +1,13 @@
 let axios=require("axios")
 let socket=null
 const io=require("socket.io-client")
-
+let URLS=require("./URLS.js")
+let baseUrl=URLS.baseUrl
 
 export function RefreshServer(){
   // no need to wait...because refresh operation is not sync
   // axios.get("http://localhost:5000/refresh")
-  axios.get("http://argo-server-1.herokuapp.com/refresh")
+  axios.get(URLS.baseUrl+"/refresh")
 }
 
 export function GetSenderList(){
@@ -14,14 +15,14 @@ export function GetSenderList(){
   // return axios.get("http://localhost:5000/listSender")
   console.log("Calling listSenderAPI")
   console.log("newstuff")
-  return axios.get("https://argo-server-1.herokuapp.com/listSender")
+  return axios.get(baseUrl+"/listSender")
 
 }
 
 // devname will be passed from the ListTractors component
 export function InitSocketApi(devname){ 
   // socket=io("http://localhost:5000",{secure:true})
-  socket=io("https://argo-server-1.herokuapp.com/")
+  socket=io(baseUrl+"/")
   socket.on('connect',function(){
     console.log("Socket connected to server")
   })
@@ -55,6 +56,8 @@ export function UnSubFromSocket(callBack){
 }
 
 
-
+console.log(baseUrl)
+// baseURl without the ending '/'
+// http://localhost:5000
 // TestSocketApi("Tractor1")
 // SubtoSocket()
