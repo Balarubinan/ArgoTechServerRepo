@@ -45,6 +45,7 @@ class ChartApp extends Component {
             }
           });
 		// Comment the Below line inproduction!!
+		if(get_obj()[0]=="D")
 		this.time_id=setInterval(this.updateChartFake, 1000);
 	}
 	componentWillUnmount=()=>{
