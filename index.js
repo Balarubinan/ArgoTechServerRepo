@@ -4,7 +4,6 @@ const path = require('path');
 var cors=require('cors')
 const socket = require("socket.io");
 var serverRouter=require('./src/seperaterouter');
-const { ConnectionClosedEvent } = require('mongodb');
 
 var app = express();
 app.use(cors())
@@ -121,5 +120,6 @@ io.on("connection", function (socket) {
       dataSenders=dataSenders.filter(soc=>soc.socket!=socket.id) 
       console.log("socket disconnected "+socket.id )
   })
+  
 }); 
 

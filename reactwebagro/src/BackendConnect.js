@@ -50,7 +50,7 @@ export function SubtoSocket(callBack=(data)=>{console.log(data)}){
 export function UnSubFromSocket(callBack){
   if(callBack){
     // the specified callback will be removed from the list for newValue event
-    console.
+    // console.
     socket.off('newValue',callBack)
   }
 }

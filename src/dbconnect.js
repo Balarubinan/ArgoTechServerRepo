@@ -1,5 +1,6 @@
 const db = require('diskdb');
-db.connect('./UserData', ['dataStore','user']);
+const { updateFiltered } = require('diskdb/lib/util');
+db.connect('./UserData', ['dataStore','user','runData']);
 
 // if (!db.dataStore.find().length) {
 //     const movie = { id: "tt0110357", name: "The Lion King", genre: "animation" };
@@ -10,6 +11,7 @@ if(db.dataStore==null||db.user==null){
     console.log("Db intialise error!")
 }else{
     console.log("DB setup complete")
+    console.log(db)
     // console.log(db.dataStore.find());
     // console.log(db.user.find())
 }
@@ -50,6 +52,25 @@ if(db.dataStore==null||db.user==null){
      return results
  }
 
+ function storeRunData(runInfo){
+    console.log("Saving run data",runInfo)
+    db.runData.save({activeTime:runInfo.activeTime,movTime:runInfo.movTime
+        ,clientId:runInfo.clientId,date:runInfo.date
+    })
+      // finsih this and create a new route
+      // check post api
+ }
+ 
+ function getRunData(date=null){
+    console.log("fetching run data")
+     if(!date){
+         return db.runData.find()
+     }
+     else{
+         return db.runData.find({date:date})
+     }
+ }
+
 //  saveNewUser("Balarubinan","bala@gmail.com","MyPass")
 //  console.log(getUser("bala@gmail.com"))
 
@@ -58,5 +79,7 @@ module.exports={
     storeContact:storeContact,
     getUser:getUser,
     saveNewUser:saveNewUser,
-    getAllContacts:getAllContacts
+    getAllContacts:getAllContacts,
+    storeRunData:storeRunData,
+    getRunData:getRunData,
 }

@@ -31,6 +31,7 @@ class ChartApp extends Component {
 		// this.current_val=0
 		this.state={current_val:0}
 		this.prevColor="blue"
+		this.styleObj={backgroundColor:"lightblue"}
 
 		// InitSocketApi()
 		// SubtoSocket(this.updateChart)
@@ -43,9 +44,12 @@ class ChartApp extends Component {
 				UnSubFromSocket(this.updateChart)
 				console.log("UnSubbed!!")
             }
-          });
+        });
+
+		  // below lines can be removed becuase URLS changes automatically use
+		  // the INITSocket method
 		// Comment the Below line inproduction!!
-		if(get_obj()[0]=="D")
+		// if(get_obj()[0]=="D")
 		this.time_id=setInterval(this.updateChartFake, 1000);
 	}
 	componentWillUnmount=()=>{
@@ -119,7 +123,7 @@ class ChartApp extends Component {
 		// redirecting to device view page if url is directly accessed
 		return (
 		<ErrorCheck>
-		<div>
+		<div >
 			{get_obj()===null&&<Navigate to="/listTractors"/>}
 			<CanvasJSChart options = {options}
 				 onRef={ref => this.chart = ref}

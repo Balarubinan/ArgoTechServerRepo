@@ -1,11 +1,18 @@
 var DBop=require('./dbconnect')
 var express = require('express');
+var bodyParser=require('body-parser')
 const fs = require('fs');
+
 var router = express.Router();
 
 
 
-router.use(express.json())
+router.use(express.json(extended=true))
+// works witth x-www-form-encoded
+// works with default options in axios
+router.use(bodyParser.urlencoded({
+   extended: true
+ }));
 // router.use(express.urlencoded())
 
 router.get('/isValid/:email/:pass',function(req, res){
@@ -76,9 +83,9 @@ router.post('/saveNewContact/:name/:email/:number/:detail',function(req,res){
 })
 
 router.get('/getAllSavedContacts',(req,res)=>{
+   console.log(DBop.getAllContacts())
    res.send({"results":DBop.getAllContacts()})
 })
-
 
 router.get('/imagesList',(req,res)=>{
    const testFolder = 'galleryImages';
@@ -89,4 +96,18 @@ router.get('/imagesList',(req,res)=>{
    });
    res.send({"imageUrls":urlsList})
 })
+
+router.post("/saveRunData",(req,res)=>{
+   console.log(req.body)
+   DBop.storeRunData(req.body)
+   res.send({stat:"success"})
+})
+
+router.post("/getRunData",(req,res)=>{
+   console.log(req.body)
+   let results=DBop.getRunData(req.body.date)
+   res.send({"runDataArr":results})
+})
+
+
 module.exports = router;

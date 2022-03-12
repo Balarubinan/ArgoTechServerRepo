@@ -1,82 +1,111 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import ReactApexChart from "react-apexcharts";
+import RealtimeLineChart from "./RealTimeChartComp";
+import {InitSocketApi,SubtoSocket, UnSubFromSocket} from './BackendConnect'
+import { get_obj } from './SharedVariables';
 
+const TIME_RANGE_IN_MILLISECONDS = 30 * 1000;
+const ADDING_DATA_INTERVAL_IN_MILLISECONDS = 500;
+const ADDING_DATA_RATIO = 0.8;
 
-// window.ApexCharts=ApexCharts
-export default class JunkComp extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state={
-    //   dataArr:[10, 41, 35, 51, 49, 62, 69, 91, 148],
-    //   categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-    // }
-
-
-    this.state = {
-    
-      series: [{
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-      }],
-      options: {
-        chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight'
-        },
-        title: {
-          text: 'Product Trends by Month',
-          align: 'left'
-        },
-        grid: {
-          row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-          },
-        },
-        xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
-        }
-      },
-    
-    
-    };
-    setInterval(()=>this.changeValues(),1000)
+export default () => {
+  const nameList = ["a"];
+  const defaultDataList = nameList.map(name => ({
+    name: name,
+    data: []
+  }));
+  const [dataList, setDataList] = React.useState(defaultDataList);
+  const [forcOnce,setF]=React.useState(null);
+  const addDataRandomly = data => {
+    if (Math.random() < 1 - ADDING_DATA_RATIO) {
+      return data;
+    }
+    return [
+      ...data,
+      {
+        x: new Date(),
+        y: data.length * Math.random()
+      }
+    ];
+  };
+  
+  const updateChart=data => {
+    console.log("Update Ch"+JSON.stringify(data))
+    console.log(dataList[0])
+    let newData={name:"a" ,data:{x:new Date().getTime() ,y:data.value}}
+    console.log([...dataList])
+    setDataList(newData);
+    console.log("newDatalist"+JSON.stringify(dataList))
   }
+  
 
-  changeValues(){
-    console.log(this.state.series[0].data)
-    let ps=this.state
-    console.log(ps)
-    ps.series[0].data.push(this.randomNum())
-    // ps.series.data=ps.series.data.splice()
-    ps.options.xaxis.categories.push("New Cat")
-    this.setState({ps})
-  }
 
-  randomNum(){
-    return Math.floor(Math.random()*100)
-  }
+  React.useEffect(() => {
+    console.log("caled only one")
+    InitSocketApi("Tractor1")
+    SubtoSocket(updateChart)
+    // return () => clearInterval(interval);
+  },[forcOnce]);
 
-  render() {
-    return (
+  return (
+    <div height="500px" width="500px">
+      <RealtimeLineChart
+        dataList={dataList}
+        range={TIME_RANGE_IN_MILLISECONDS}
+      />
+    </div>
+  );
+};
+
+
+// export default class JunkComp extends React.Component {
+//   constructor(props){
+//     super(props)
+//     const nameList = ["a"];
+//     const defaultDataList = nameList.map(name => ({
+//       name: name,
+//       data: []
+//     }));
+//     this.state={dataList:defaultDataList}
       
+//     InitSocketApi("Tractor1")
+//     SubtoSocket(this.updateChart)
+//   }
+//   addDataRandomly = data => {
+//     if (Math.random() < 1 - ADDING_DATA_RATIO) {
+//       return data;
+//     }
+//     return [
+//       ...data,
+//       {
+//         x: new Date(),
+//         y: data.length * Math.random()
+//       }
+//     ];
+//   };
+//   updateChart=data => {
+//     console.log("Update Ch"+JSON.stringify(data))
+//     console.log(this.state.dataList[0].data)
+//     this.setState({dataList:this.state.dataList.map(val => {
+//       return {
+//         name: val.name,
+//         data: [...this.state.dataList[0].data,data.value]
+//       };
+//     })})
+//   }
+  
+//   render() {
+//     return (
+//           <div height="500px" width="500px">
+//       <RealtimeLineChart
+//         dataList={this.state.dataList}
+//         range={TIME_RANGE_IN_MILLISECONDS}
+//       />
+//     </div>
+//     )
+//   }
+// }
 
-<div id="chart">
-<ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} />
-</div>
-    );
-  }
-}
-
-// the animation changes ...but the thing is it only loads the changes on size change
