@@ -1,5 +1,4 @@
 const db = require('diskdb');
-const { updateFiltered } = require('diskdb/lib/util');
 db.connect('./UserData', ['dataStore','user','runData']);
 
 // if (!db.dataStore.find().length) {
@@ -63,7 +62,7 @@ if(db.dataStore==null||db.user==null){
  
  function getRunData(date=null){
     console.log("fetching run data")
-     if(!date){
+     if(date=="all"){
          return db.runData.find()
      }
      else{
