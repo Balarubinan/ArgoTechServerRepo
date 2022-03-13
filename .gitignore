@@ -1,2 +1,5 @@
 /node_modules
 /agro-react-app/node_modules
+
+# URL variable baseUrl
+/reactwebagro/src/URLS.js

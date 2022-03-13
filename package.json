@@ -28,7 +28,7 @@
     "socket.io": "^2.0.1",
     "socket.io-client": "^2.0.1"
   },
-  "nodemonConfig": { "ignore": [ "UserData/*" ] },
+  "nodemonConfig": { "ignore": [ "UserData/*","reactwebagro/*" ] },
   "engines": {
     "node": "12.18.2"
   }
