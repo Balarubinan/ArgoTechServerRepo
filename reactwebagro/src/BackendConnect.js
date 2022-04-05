@@ -51,7 +51,8 @@ export function UnSubFromSocket(callBack){
   if(callBack){
     // the specified callback will be removed from the list for newValue event
     // console.
-    socket.off('newValue',callBack)
+    // tried off,removeListner and remmoveallListener
+    socket.removeListener('newValue',callBack)
   }
 }
 

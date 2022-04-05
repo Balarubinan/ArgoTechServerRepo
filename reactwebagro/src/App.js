@@ -53,7 +53,7 @@ function App(props) {
           {/* Profile wil be named as Admin Login */}
           <Route path="/Gallery" element={<GalleryComp/>}/>
           <Route path="/test2" element={<JunkComp/>}/>
-          <Route path="/test3" element={<ViewHistoryComp/>}/>
+          <Route path="/LevelHistory" element={<ViewHistoryComp/>}/>
           {/* junk comp is a class */}
         </Routes>
       </Router>

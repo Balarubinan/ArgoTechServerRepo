@@ -28,6 +28,7 @@ function TimeEstimateComp() {
         XtraFactor+=(parseInt(data.soilType)*0.2)
         XtraFactor+=(parseInt(data.soilCondition)*0.4)
         XtraFactor+=(parseInt(data.preCondition)*0.5)
+        XtraFactor+=(parseInt(data.bulkDensity)*0.5)
         setCost((BaseCost*XtraFactor).toFixed(1).toString())
     }
     return (
@@ -67,6 +68,21 @@ function TimeEstimateComp() {
           id="tractorSpeed"
           name="tractorSpeed"
           placeholder="Speed in Kmph"
+          type="text"
+          required="required"
+          className="form-control"
+        />
+      </div>
+    </div>
+    <div className="form-group row">
+      <label htmlFor="bulkDensity" className="col-4 col-form-label">
+        Bulk Density
+      </label>
+      <div className="col-8">
+        <input
+          id="bulkDensity"
+          name="bulkDensity"
+          placeholder="bulk density in Kg/M^3"
           type="text"
           required="required"
           className="form-control"

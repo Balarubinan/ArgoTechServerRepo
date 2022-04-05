@@ -32,7 +32,7 @@ export default class ListConComp extends Component {
         GetSenderList().then(data=>{
             console.log(data.data.senders)
             // this.setState({dev_names:data.data.senders})
-            this.setState({dev_names:[...data.data.senders,"Demo Graph"]})
+            this.setState({dev_names:[...data.data.senders,"Demo Graph","Land leveler 1","Land leveler 2","Land leveler 3"]})
         },()=>{})
         console.log("dev name"+JSON.stringify(this.state.dev_names))
     }
@@ -52,7 +52,7 @@ export default class ListConComp extends Component {
                 <h2 className="navbar navbar-dark bg-dark text-white justify-content-center mb-5" style={{"padding":"30px"}}>Active Devices</h2>
                 {this.state.dev_names.length>0&&this.state.dev_names.map((device,i,a)=>(
                     <div className="card text-white bg-dark mb-3" key={i}>
-                        <div className="card-body">
+                        <div className="card-body m5">
                         <div className="row">
                         <div className="col">
                             <div className="row">
