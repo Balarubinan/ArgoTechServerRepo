@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import {Navigate} from 'react-router-dom';
 import TemporaryDrawer from './SideNavBar'
 import ButtonAppBar from './TopNavBar'
+import { isMobile } from 'react-device-detect'
 var sharedVars=require("./SharedVariables")
 // import { browserHistory } from 'react-router';
 
@@ -48,8 +49,8 @@ export default class ListConComp extends Component {
     }
     render() {
         return (
-            <div>
-                <h2 className="navbar navbar-dark bg-dark text-white justify-content-center mb-5" style={{"padding":"30px"}}>Active Devices</h2>
+            <div className='d-flex justify-content-center' style={{"marginRight":isMobile?"0%":"25%","max-width":isMobile?"100%":"50%","display":"flex","flexDirection":"column","backgroundColor":"lightgray","borderRadius":"10px"}}>
+                <h2 className="navbar navbar-dark bg-dark text-white justify-content-center mb-5" style={{"padding":"30px",}}>Active Devices</h2>
                 {this.state.dev_names.length>0&&this.state.dev_names.map((device,i,a)=>(
                     <div className="card text-white bg-dark mb-3" key={i}>
                         <div className="card-body m5">
