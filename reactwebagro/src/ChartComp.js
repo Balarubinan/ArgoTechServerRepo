@@ -5,6 +5,7 @@ import {Navigate} from 'react-router-dom'
 // import { browserHistory } from 'react-router-dom';
 import { createBrowserHistory as browserHistory, History } from 'history' 
 import ErrorCheck from './ErrorBoundComp'
+import Button from '@mui/material/Button'
 
 var sharedVars=require("./SharedVariables")
 var React = require('react');
@@ -24,12 +25,12 @@ var updateInterval = 1000;
 class ChartApp extends Component {
 	constructor(props) {
 		super(props);
-		this.state=({lineColor:"green"})
+		// this.state=({lineColor:"green"})
 		this.updateChart = this.updateChart.bind(this);
 		this.updateChartFake=this.updateChartFake.bind(this);
 		console.log("Cur_objsis  "+sharedVars.get_obj())
 		// this.current_val=0
-		this.state={current_val:0}
+		this.state={current_val:0,mode:"L",base:0}
 		this.prevColor="blue"
 		this.styleObj={backgroundColor:"lightblue"}
 
@@ -50,7 +51,7 @@ class ChartApp extends Component {
 		  // the INITSocket method
 		// Comment the Below line inproduction!!
 		// if(get_obj()[0]=="D")
-		this.time_id=setInterval(this.updateChartFake, 1000);
+		// this.time_id=setInterval(this.updateChartFake, 1000);
 	}
 	componentWillUnmount=()=>{
 		// clearInterval(this.time_id)
@@ -60,8 +61,15 @@ class ChartApp extends Component {
 		UnSubFromSocket(this.updateChart)
 		console.log("Unmount called")
 	}
+	setBase=()=>{
+		console.log("Base Change ")
+		console.log(dps)
+		this.setState({base:this.state.current_val})
+		// this.setState({base:10})
+	}
 	updateChartFake=()=>{
-		yVal = Math.round(5 + Math.random() *(-5-5));
+		yVal = Math.round(5 + Math.random() *(-5-5))-this.state.base;
+		console.log(typeof yval)
 		this.setState({current_val:yVal})
 		let lastVal=dps[dps.length-1].y
 		console.log("plotting point y: "+yVal+" lastY: "+lastVal)
@@ -89,7 +97,8 @@ class ChartApp extends Component {
 	}
 	updateChart=(data)=>{
 		console.log(data)
-		yVal = data.value
+		// subracting base value
+		yVal = data.value-this.state.base;
 		this.setState({current_val:yVal})
 		// xVal=new Date().getMinutes()+":"+new Date().getSeconds()
 		// dps.push({x: xVal,y: yVal});
@@ -129,7 +138,11 @@ class ChartApp extends Component {
 				 onRef={ref => this.chart = ref}
 			/>
 			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-			<h3 className="d-flex justify-content-center" style={{"padding":"50px"}}>Current value :  {this.state.current_val} V</h3>
+			<div className="d-flex justify-content-center flex-column">
+			<Button className="d-flex justify-content-center" variant="contained" style={{"padding":"10px"}} 
+			onClick={this.setBase}>Set Base</Button>
+			<h3 className="d-flex justify-content-center" style={{"padding":"50px"}} >Current value :  {this.state.current_val} V</h3>
+			</div>
 		</div>
 		</ErrorCheck>
 		);
