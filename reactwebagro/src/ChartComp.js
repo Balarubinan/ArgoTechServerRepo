@@ -65,6 +65,7 @@ class ChartApp extends Component {
 		console.log("Base Change ")
 		console.log(dps)
 		this.setState({base:this.state.current_val})
+		console.log(this.state.current_val)
 		// this.setState({base:10})
 	}
 	updateChartFake=()=>{
@@ -98,11 +99,14 @@ class ChartApp extends Component {
 	updateChart=(data)=>{
 		console.log(data)
 		// subracting base value
-		yVal = data.value-this.state.base;
-		this.setState({current_val:yVal})
+		
+		yVal = data/51-this.state.base;
+		// yVal/=51
+		// yVal = data.value-this.state.base;
+		this.setState({current_val:yVal,lineColor:"blue"})
 		// xVal=new Date().getMinutes()+":"+new Date().getSeconds()
 		// dps.push({x: xVal,y: yVal});
-		dps.push({x: xVal,y: yVal,lineColor:yVal>0?"red":"green"});
+		dps.push({x: xVal,y: yVal});
 		xVal++;
 		if (dps.length >  10 ) {
 			dps.shift();
