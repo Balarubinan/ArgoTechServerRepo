@@ -49,7 +49,14 @@ export default class ListConComp extends Component {
     }
     render() {
         return (
-            <div className='d-flex justify-content-center' style={{"marginRight":isMobile?"0%":"25%","max-width":isMobile?"100%":"50%","display":"flex","flexDirection":"column","backgroundColor":"lightgray","borderRadius":"10px"}}>
+            <div className='d-flex justify-content-center' style={{
+                "marginTop":!isMobile?"1%":"0%",
+                "marginLeft":!isMobile?"25%":"0%",
+                "marginRight":isMobile?"0%":"25%",
+                "max-width":isMobile?"100%":"50%",
+                "max-height":!isMobile?"70%":"100%",
+                "display":"flex","flexDirection":"column",
+                "backgroundColor":"lightgray","borderRadius":"10px"}}>
                 <h2 className="navbar navbar-dark bg-dark text-white justify-content-center mb-5" style={{"padding":"30px",}}>Active Devices</h2>
                 {this.state.dev_names.length>0&&this.state.dev_names.map((device,i,a)=>(
                     <div className="card text-white bg-dark mb-3" key={i}>
@@ -62,8 +69,12 @@ export default class ListConComp extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="row">
+                        <div className="col" style={{ 
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            marginLeft: "auto",
+                            marginRight: "0"}}>
+                            <div className="row" style={{"fontSize": "27px","alignRight":"right"}}>
                                 <div className="col" style={{"fontSize": "27px"}}>
                                 <Button variant="contained" onClick={(event)=>this.handleClick(event,device)} soc_name={device}>Connect</Button>
                                 </div>

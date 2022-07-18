@@ -28,7 +28,9 @@ class ChartApp extends Component {
 		// this.state=({lineColor:"green"})
 		this.updateChart = this.updateChart.bind(this);
 		this.updateChartFake=this.updateChartFake.bind(this);
-		console.log("Cur_objsis  "+sharedVars.get_obj())
+		console.log("Cur_objsis "+sharedVars.get_obj())
+		
+		
 		// this.current_val=0
 		this.state={current_val:0,mode:"L",base:0}
 		this.prevColor="blue"
@@ -47,6 +49,11 @@ class ChartApp extends Component {
             }
         });
 
+		// Checking if the current grpah is a "Demo graph"
+		if(sharedVars.get_obj().includes("Demo")){
+			console.log("Demo graph detected")
+			this.time_id=setInterval(this.updateChartFake, 1000);urls
+		}
 		  // below lines can be removed becuase URLS changes automatically use
 		  // the INITSocket method
 		// Comment the Below line inproduction!!
@@ -99,8 +106,10 @@ class ChartApp extends Component {
 	updateChart=(data)=>{
 		console.log(data)
 		// subracting base value
-		
-		yVal = data/51-this.state.base;
+		// the correction was done in raspberrry pi on 18/Jul/2022 so no need to
+		// subract base and data sent is already converted hence no divide by 51	
+		// yVal = data/51-this.state.base;
+		yVal = data-this.state.base;
 		// yVal/=51
 		// yVal = data.value-this.state.base;
 		this.setState({current_val:yVal,lineColor:"blue"})
