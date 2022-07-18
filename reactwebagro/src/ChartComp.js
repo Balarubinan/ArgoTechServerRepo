@@ -52,7 +52,7 @@ class ChartApp extends Component {
 		// Checking if the current grpah is a "Demo graph"
 		if(sharedVars.get_obj().includes("Demo")){
 			console.log("Demo graph detected")
-			this.time_id=setInterval(this.updateChartFake, 1000);urls
+			this.time_id=setInterval(this.updateChartFake, 1000);
 		}
 		  // below lines can be removed becuase URLS changes automatically use
 		  // the INITSocket method
